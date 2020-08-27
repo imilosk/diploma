@@ -45,12 +45,14 @@
                             'Content-Type': 'multipart/form-data'
                         }
                     }
-                ).then(function(){
+                ).then(function(res){
                     console.log('SUCCESS!!');
+                    console.log(res);
                 })
-                    .catch(function(){
-                        console.log('FAILURE!!');
-                    });
+                .catch(function(res){
+                    console.log('FAILURE!!');
+                    console.log(res);
+                });
             },
 
             /*

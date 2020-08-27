@@ -1950,10 +1950,12 @@ __webpack_require__.r(__webpack_exports__);
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(function () {
+      }).then(function (res) {
         console.log('SUCCESS!!');
-      })["catch"](function () {
+        console.log(res);
+      })["catch"](function (res) {
         console.log('FAILURE!!');
+        console.log(res);
       });
     },
 
