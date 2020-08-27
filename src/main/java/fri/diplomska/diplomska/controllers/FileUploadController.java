@@ -3,18 +3,21 @@ package fri.diplomska.diplomska.controllers;
 import fri.diplomska.diplomska.docker.ImageBuilder;
 import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.kubernetes.Deployer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.ws.Response;
 import java.io.File;
 import java.io.IOException;
 
 @RestController
 public class FileUploadController {
     @PostMapping("/uploadDockerImage")
-    public String index(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             ImageBuilder imageBuilder = new ImageBuilder();
             String filePathToSave = Helper.getProjectPath() + "docker\\";
@@ -22,9 +25,9 @@ public class FileUploadController {
             String imageId = imageBuilder.build(filePathToSave);
             Deployer deployer = new Deployer();
             deployer.deploy(imageId);
-        } catch(IOException e) {
-            e.printStackTrace();
+        } catch(Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
         }
-        return "home";
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 }
