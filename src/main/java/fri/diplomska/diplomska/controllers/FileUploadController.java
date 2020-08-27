@@ -14,7 +14,7 @@ import java.io.File;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @RequestParam(value = "/uploadDockerImage", method = RequestMethod.POST )
+    @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.POST )
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             ImageBuilder imageBuilder = new ImageBuilder();
