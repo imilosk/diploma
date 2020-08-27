@@ -5,17 +5,17 @@ import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.kubernetes.Deployer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.xml.ws.Response;
 import java.io.File;
-import java.io.IOException;
 
 @RestController
 public class FileUploadController {
+
+    @ExceptionHandler(Exception.class)
     @PostMapping("/uploadDockerImage")
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
