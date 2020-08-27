@@ -1,4 +1,4 @@
-package fri.diplomska.diplomska;
+package fri.diplomska.diplomska.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
