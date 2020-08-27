@@ -5,10 +5,7 @@ import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.kubernetes.Deployer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 
@@ -16,7 +13,7 @@ import java.io.File;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @PostMapping("/uploadDockerImage")
+    @PostMapping(value = "/uploadDockerImage")
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             ImageBuilder imageBuilder = new ImageBuilder();
@@ -30,4 +27,10 @@ public class FileUploadController {
         }
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+
+    @GetMapping(value = "/test")
+    public ResponseEntity<String> test() {
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+
 }
