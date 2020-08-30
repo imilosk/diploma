@@ -3,7 +3,6 @@ package fri.diplomska.diplomska.controllers;
 import fri.diplomska.diplomska.docker.ImageBuilder;
 import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.kubernetes.Deployer;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
