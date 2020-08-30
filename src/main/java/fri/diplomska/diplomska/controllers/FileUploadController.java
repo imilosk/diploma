@@ -17,12 +17,7 @@ public class FileUploadController {
     @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.GET )
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
-            ImageBuilder imageBuilder = new ImageBuilder();
-            String filePathToSave = Helper.getProjectPath() + "docker\\";
-            file.transferTo(new File(filePathToSave + file.getOriginalFilename()));
-            String imageId = imageBuilder.build(filePathToSave);
-            Deployer deployer = new Deployer();
-            deployer.deploy(imageId);
+            int a = 0;
         } catch(Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
         }
