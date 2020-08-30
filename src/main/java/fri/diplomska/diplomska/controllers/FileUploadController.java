@@ -18,7 +18,7 @@ public class FileUploadController {
     public ResponseEntity<String> index(MultipartFile file) {
         try {
             ImageBuilder imageBuilder = new ImageBuilder();
-            String filePathToSave = Helper.getProjectPath() + "docker\\";
+            String filePathToSave = Helper.getProjectPath() + "docker" + File.separator;
             file.transferTo(new File(filePathToSave + file.getOriginalFilename()));
             String imageId = imageBuilder.build(filePathToSave);
             Deployer deployer = new Deployer();
