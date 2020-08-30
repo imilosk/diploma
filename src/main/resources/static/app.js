@@ -1946,7 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
         Make the request to the POST /single-file URL
       */
 
-      axios.post('/uploadDockerImage', formData, {
+      axios.get('/uploadDockerImage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

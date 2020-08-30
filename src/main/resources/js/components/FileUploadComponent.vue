@@ -38,7 +38,7 @@
                 /*
                   Make the request to the POST /single-file URL
                 */
-                axios.post( '/uploadDockerImage',
+                axios.get( '/uploadDockerImage',
                     formData,
                     {
                         headers: {
