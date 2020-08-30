@@ -15,9 +15,14 @@ public class FileUploadController {
     @ExceptionHandler(Exception.class)
     @CrossOrigin(origins = "http://milos-diploma.tech:9090/")
     @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.GET )
-    public ResponseEntity<String> index() {
+    public ResponseEntity<String> index(MultipartFile file) {
         try {
-            int a = 0;
+            ImageBuilder imageBuilder = new ImageBuilder();
+            String filePathToSave = Helper.getProjectPath() + "docker\\";
+            file.transferTo(new File(filePathToSave + file.getOriginalFilename()));
+            String imageId = imageBuilder.build(filePathToSave);
+            Deployer deployer = new Deployer();
+            deployer.deploy(imageId);
         } catch(Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.OK);
         }
