@@ -3,6 +3,7 @@ package fri.diplomska.diplomska.docker;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.ProgressHandler;
+import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ProgressMessage;
 import fri.diplomska.diplomska.helpers.Helper;
@@ -15,13 +16,12 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ImageBuilder {
 
     public String build(String filePath) {
-        final DockerClient docker = DefaultDockerClient.builder()
-                .uri(URI.create("http://localhost:2375"))
-                .build();
-
-        final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
-
         try {
+            final DockerClient docker = DefaultDockerClient.
+                    builder().
+                    uri(URI.create("http://localhost:2375")).
+                    build();
+            final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
             final String returnedImageId = docker.build(
                     Paths.get(filePath), "diplomska:v1", new ProgressHandler() {
                         @Override
