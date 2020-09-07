@@ -1,0 +1,30 @@
+.vue-dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  border-radius: 14px;
+  opacity: 0.84;
+
+  .dropzone-custom-content {
+    position: absolute;
+    text-align: center;
+  }
+
+  .dropzone-custom-title {
+    margin-top: 0;
+    color: #314b5f;
+  }
+
+  .subtitle {
+    color: #314b5f;
+  }
+
+  .dz-message {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

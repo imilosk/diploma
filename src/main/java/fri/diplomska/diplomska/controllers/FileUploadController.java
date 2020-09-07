@@ -14,7 +14,6 @@ import java.io.File;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @CrossOrigin(origins = "http://milos-diploma.tech:9090/")
     @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.POST )
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
