@@ -5,8 +5,6 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import Vuetify from 'vuetify'
 
 Vue.use(Vuetify)
-const opts = {}
-export default new Vuetify(opts)
 
 Vue.component('vue-dropzone', vue2Dropzone);
 Vue.use(VueRouter);
@@ -40,5 +38,6 @@ const router = new VueRouter({
 // 4. Create and mount the root instance.
 const app = new Vue({
     router,
+    vuetify: new Vuetify()
 }).$mount('#app');
 // Now the app has started!
