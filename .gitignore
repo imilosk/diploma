@@ -36,3 +36,5 @@ build/
 ### VS Code ###
 .mvn
 
+/src/main/resources/static/
+
