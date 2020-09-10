@@ -16,11 +16,15 @@
   "description": "",
   "devDependencies": {
     "cross-env": "^7.0.2",
+    "fibers": "^5.0.0",
     "laravel-mix": "^5.0.4",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.26.9",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify": "^2.3.10",
+    "vuetify-loader": "^1.6.0",
+    "vuetifyjs-mix-extension": "0.0.14"
   },
   "dependencies": {
     "axios": "^0.19.2",

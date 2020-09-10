@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
+const opts = {}
+export default new Vuetify(opts)
 
 Vue.component('vue-dropzone', vue2Dropzone);
 Vue.use(VueRouter);
@@ -16,14 +20,14 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 // 1. Define route components.
 const Foo = { template: '<div>foo</div>' }
-const RepositoryComponent = resolve => {
-    require.ensure([], require => resolve(require('./components/RepositoryComponent.vue')), 'foo');
+const RepositoryPageComponent = resolve => {
+    require.ensure([], require => resolve(require('./components/repository/RepositoryPageComponent.vue')), 'foo');
 };
 
 // 2. Define routes
 const routes = [
     { path: '/dashboard', component: Foo },
-    { path: '/repository', component: RepositoryComponent },
+    { path: '/repository', component: RepositoryPageComponent },
     { path: '/k8s', component: Foo },
     { path: '/settings', component: Foo }
 ]
@@ -37,5 +41,4 @@ const router = new VueRouter({
 const app = new Vue({
     router,
 }).$mount('#app');
-
 // Now the app has started!

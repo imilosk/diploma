@@ -36,6 +36,7 @@ main {
   position: fixed;
   background-color: var(--bg-primary);
   transition: width 600ms ease;
+  z-index: 9999;
 }
 
 .navbar-nav {
@@ -216,32 +217,157 @@ main {
 }
 
 .vue-dropzone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit;
-  border-radius: 14px;
-  opacity: 0.84;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: inherit !important;
+  border-radius: 14px !important;
+  opacity: 0.84 !important;
+  width: 50%;
+  height: 100px;
+  margin: 0 auto;
 }
 
 .vue-dropzone .dropzone-custom-content {
-  position: absolute;
-  text-align: center;
+  text-align: center !important;
 }
 
 .vue-dropzone .dropzone-custom-title {
-  margin-top: 0;
-  color: #314b5f;
+  margin-top: 0 !important;
+  color: #314b5f !important;
 }
 
 .vue-dropzone .subtitle {
-  color: #314b5f;
+  color: #314b5f !important;
+}
+
+.vue-dropzone .dz-preview {
+  position: relative !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin: 16px !important;
+  min-height: 100px !important;
 }
 
 .vue-dropzone .dz-message {
   margin: 0 !important;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.vue-dropzone .dz-image {
+  overflow: hidden !important;
+  width: 120px !important;
+  height: 120px !important;
+  position: relative !important;
+  display: block !important;
+  z-index: 10 !important;
+}
+
+.vue-dropzone .dz-details {
+  z-index: 20 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  font-size: 13px !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  padding: 2em 1em !important;
+  text-align: center !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  line-height: 150% !important;
+  background-color: #ECECEC !important;
+}
+
+.vue-dropzone .dz-details .dz-size {
+  margin-bottom: 1em !important;
+  font-size: 16px !important;
+}
+
+.vue-dropzone .dz-details .dz-filename {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: default !important;
+}
+
+.vue-dropzone .dz-details .dz-filename:not(:hover) {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: default !important;
+}
+
+.vue-dropzone .dz-progress {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease-in !important;
+}
+
+.vue-dropzone .dz-progress .dz-upload {
+  width: 100% !important;
+  background: #333 !important;
+  background: linear-gradient(to bottom, #666, #444) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 0 !important;
+  transition: width 300ms ease-in-out !important;
+}
+
+.vue-dropzone .dz-error-message {
+  pointer-events: none !important;
+  z-index: 1000 !important;
+  position: absolute !important;
+  display: block !important;
+  display: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  top: 130px !important;
+  left: -10px !important;
+  width: 140px !important;
+  background: #be2626 !important;
+  background: linear-gradient(to bottom, #be2626, #a92222) !important;
+  padding: 0.5em 1.2em !important;
+  color: white !important;
+}
+
+.vue-dropzone .dz-success-mark {
+  -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1) !important;
+  animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  z-index: 500 !important;
+  position: absolute !important;
+  display: block !important;
+  top: 35% !important;
+  left: 25% !important;
+  margin-left: -27px !important;
+  margin-top: -27px !important;
+}
+
+.vue-dropzone .dz-success-mark svg {
+  display: block !important;
+  width: 54px !important;
+  height: 54px !important;
+}
+
+.vue-dropzone .dz-error-mark {
+  pointer-events: none !important;
+  opacity: 0 !important;
+  z-index: 500 !important;
+  position: absolute !important;
+  display: block !important;
+  top: 35% !important;
+  left: 25% !important;
+  margin-left: -27px !important;
+  margin-top: -27px !important;
+}
+
+.vue-dropzone .dz-error-mark svg {
+  display: block !important;
+  width: 54px !important;
+  height: 54px !important;
 }
 

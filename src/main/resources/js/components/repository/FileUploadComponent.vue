@@ -18,8 +18,7 @@
                     createImageThumbnails: false,
                     uploadMultiple: false,
                     thumbnailWidth: 60,
-                    thumbnailHeight: 60,
-                    maxFiles: 1
+                    thumbnailHeight: 60
                 },
             }
         },
