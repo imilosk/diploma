@@ -13,6 +13,7 @@
             placeholder="Start typing to Search"
             prepend-icon="mdi-database-search"
             return-object
+            filled
     ></v-autocomplete>
 </template>
 

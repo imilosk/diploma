@@ -8,6 +8,7 @@
   width: 50%;
   height: 100px;
   margin: 0 auto;
+  margin-bottom: 50px;
 
   .dropzone-custom-content {
     text-align: center !important;
@@ -58,7 +59,7 @@
     text-align: center !important;
     color: rgba(0, 0, 0, 0.9) !important;
     line-height: 150% !important;
-    background-color: $light-gray !important;
+    background-color: $text-secondary !important;
 
     .dz-size {
       margin-bottom: 1em !important;

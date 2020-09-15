@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import vue2Dropzone from 'vue2-dropzone'
-import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-import Vuetify from 'vuetify'
+import vue2Dropzone from 'vue2-dropzone';
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+import Vuetify from 'vuetify';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
-Vue.use(Vuetify)
+Vue.use(Vuetify);
 
 Vue.component('vue-dropzone', vue2Dropzone);
 Vue.use(VueRouter);
@@ -28,7 +29,7 @@ const routes = [
     { path: '/repository', component: RepositoryPageComponent },
     { path: '/k8s', component: Foo },
     { path: '/settings', component: Foo }
-]
+];
 
 // 3. Create the router instance and pass the `routes` option
 const router = new VueRouter({
@@ -38,6 +39,15 @@ const router = new VueRouter({
 // 4. Create and mount the root instance.
 const app = new Vue({
     router,
-    vuetify: new Vuetify()
+    vuetify: new Vuetify({
+        theme: {
+            themes: {
+                dark: {
+                    primary: '#b6b6b6',
+                    secondary: '#ececec'
+                }
+            }
+        }
+    })
 }).$mount('#app');
 // Now the app has started!

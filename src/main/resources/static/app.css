@@ -37,6 +37,7 @@ main {
   background-color: var(--bg-primary);
   transition: width 600ms ease;
   z-index: 9999;
+  left: 0;
 }
 
 .navbar-nav {
@@ -47,6 +48,7 @@ main {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  padding-left: 0 !important;
 }
 
 .nav-item {
@@ -226,6 +228,7 @@ main {
   width: 50%;
   height: 100px;
   margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 .vue-dropzone .dropzone-custom-content {
@@ -277,7 +280,7 @@ main {
   text-align: center !important;
   color: rgba(0, 0, 0, 0.9) !important;
   line-height: 150% !important;
-  background-color: #ECECEC !important;
+  background-color: #ececec !important;
 }
 
 .vue-dropzone .dz-details .dz-size {
