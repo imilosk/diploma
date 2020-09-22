@@ -296,6 +296,7 @@ main {
   height: 100px;
   margin: 0 auto;
   margin-bottom: 50px;
+  min-height: 100px !important;
 }
 
 .vue-dropzone .dropzone-custom-content {
@@ -446,12 +447,12 @@ main {
   float: left;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 4px;
-  height: 42px;
+  height: 35px;
 }
 
 .search-component .textbox {
   outline: 0;
-  height: 42px;
+  height: 100%;
   width: 244px;
   line-height: 42px;
   padding: 0 16px;
@@ -468,11 +469,13 @@ main {
 }
 
 .search-component .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   outline: 0;
   background: none;
   background-color: rgba(38, 50, 56, 0.8);
-  float: left;
-  height: 42px;
+  height: 100%;
   width: 42px;
   text-align: center;
   line-height: 42px;
@@ -489,21 +492,21 @@ main {
   background-color: rgba(0, 150, 136, 0.8);
 }
 
-.aselect {
+.dropdown-component {
   width: 150px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  height: 42px;
+  height: 35px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.aselect .selector {
+.dropdown-component .selector {
   position: relative;
   z-index: 1;
 }
 
-.aselect .selector .arrow {
+.dropdown-component .selector .arrow {
   position: absolute;
   right: 10px;
   top: 40%;
@@ -517,18 +520,18 @@ main {
   transition-timing-function: cubic-bezier(0.59, 1.39, 0.37, 1.01);
 }
 
-.aselect .selector .expanded {
+.dropdown-component .selector .expanded {
   transform: rotateZ(180deg) translateY(2px);
 }
 
-.aselect .selector .label {
+.dropdown-component .selector .label {
   display: block;
-  padding: 12px;
+  padding: 8px;
   font-size: 16px;
   color: #888;
 }
 
-.aselect ul {
+.dropdown-component ul {
   width: 100%;
   list-style-type: none;
   padding: 0;
@@ -540,25 +543,25 @@ main {
   background: #fff;
 }
 
-.aselect li {
+.dropdown-component li {
   padding: 12px;
   color: #666;
 }
 
-.aselect li:hover {
+.dropdown-component li:hover {
   color: white;
   background: rgba(0, 150, 136, 0.8);
 }
 
-.aselect .current {
+.dropdown-component .current {
   background: #eaeaea;
 }
 
-.aselect .hidden {
+.dropdown-component .hidden {
   visibility: hidden;
 }
 
-.aselect .visible {
+.dropdown-component .visible {
   visibility: visible;
 }
 

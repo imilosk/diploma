@@ -1,5 +1,5 @@
 <template>
-    <div class="aselect" :data-value="value" :data-list="list">
+    <div class="dropdown-component" :data-value="value" :data-list="list">
         <div class="selector" @click="toggle()">
             <div class="label">
                 <span>{{ value }}</span>

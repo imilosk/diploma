@@ -3845,7 +3845,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "aselect",
+      staticClass: "dropdown-component",
       attrs: { "data-value": _vm.value, "data-list": _vm.list }
     },
     [
