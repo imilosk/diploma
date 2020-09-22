@@ -1,4 +1,61 @@
-:root {
+@font-face {
+  font-family: 'fontello';
+  src: url('/font/fontello.eot?55560023');
+  src: url(/fonts/fontello.eot?17873b8f8fcddefe99cf7b63e7cb0fac#iefix) format('embedded-opentype'),
+       url(/fonts/fontello.woff2?70d9cf707c5ad392ea96d5343cdf0293) format('woff2'),
+       url(/fonts/fontello.woff?54ed95449bcd271ffacaf1d1dd9a3816) format('woff'),
+       url(/fonts/fontello.ttf?496b2bc575b008e10e6803fd7e73def5) format('truetype'),
+       url(/fonts/fontello.svg?5f74b4cc410ef33c3a50f165c12c7470#fontello) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?55560023#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-search:before { content: '\E800'; } /* '' */:root {
   font-size: 16px;
   font-family: "Arial,sans-serif", sans-serif;
   --text-primary: #b6b6b6;
@@ -218,6 +275,16 @@ main {
   display: block;
 }
 
+#repository .first-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#repository .first-row .filters {
+  display: flex;
+}
+
 .vue-dropzone {
   display: flex !important;
   align-items: center !important;
@@ -372,5 +439,126 @@ main {
   display: block !important;
   width: 54px !important;
   height: 54px !important;
+}
+
+.search-component {
+  outline: 0;
+  float: left;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
+  height: 42px;
+}
+
+.search-component .textbox {
+  outline: 0;
+  height: 42px;
+  width: 244px;
+  line-height: 42px;
+  padding: 0 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #212121;
+  border: 0;
+  float: left;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-component .textbox:focus {
+  outline: 0;
+  background-color: #FFF;
+}
+
+.search-component .button {
+  outline: 0;
+  background: none;
+  background-color: rgba(38, 50, 56, 0.8);
+  float: left;
+  height: 42px;
+  width: 42px;
+  text-align: center;
+  line-height: 42px;
+  border: 0;
+  color: #FFF;
+  font-size: 16px;
+  text-rendering: auto;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s ease;
+  border-radius: 0 4px 4px 0;
+}
+
+.search-component .button:hover {
+  background-color: rgba(0, 150, 136, 0.8);
+}
+
+.aselect {
+  width: 150px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  height: 42px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.aselect .selector {
+  position: relative;
+  z-index: 1;
+}
+
+.aselect .selector .arrow {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #888;
+  transform: rotateZ(0deg) translateY(0px);
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.59, 1.39, 0.37, 1.01);
+}
+
+.aselect .selector .expanded {
+  transform: rotateZ(180deg) translateY(2px);
+}
+
+.aselect .selector .label {
+  display: block;
+  padding: 12px;
+  font-size: 16px;
+  color: #888;
+}
+
+.aselect ul {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  border: 1px solid gainsboro;
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+}
+
+.aselect li {
+  padding: 12px;
+  color: #666;
+}
+
+.aselect li:hover {
+  color: white;
+  background: rgba(0, 150, 136, 0.8);
+}
+
+.aselect .current {
+  background: #eaeaea;
+}
+
+.aselect .hidden {
+  visibility: hidden;
+}
+
+.aselect .visible {
+  visibility: visible;
 }
 
