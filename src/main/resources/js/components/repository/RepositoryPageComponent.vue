@@ -1,13 +1,19 @@
 <template>
-        <div id="repository">
+        <div id="--page-repository">
                 <file-upload-component></file-upload-component>
-                <div class="first-row">
+                <div class="filters-row">
                         <search-component></search-component>
                         <div class="filters">
                                 <filter-component></filter-component>
                                 <filter-component></filter-component>
                                 <filter-component></filter-component>
                         </div>
+                </div>
+                <div class="containers-row">
+                        <container-card-component></container-card-component>
+                        <container-card-component></container-card-component>
+                        <container-card-component></container-card-component>
+                        <container-card-component></container-card-component>
                 </div>
         </div>
 </template>
