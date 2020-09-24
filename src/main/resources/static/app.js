@@ -2106,242 +2106,6 @@ module.exports = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
@@ -2358,6 +2122,43 @@ module.exports = {
 //
 //
 //
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      startContainerText: 'Start container',
+      stopContainerText: 'Stop container',
+      isStarted: false,
+      buttonText: 'Start container'
+    };
+  },
+  methods: {
+    setButtonText: function setButtonText() {
+      this.buttonText = this.isStarted ? this.stopContainerText : this.startContainerText;
+    },
+    toggleOnOff: function toggleOnOff() {
+      this.isStarted = !this.isStarted;
+      this.setButtonText();
+    }
+  }
+});
 
 /***/ }),
 
@@ -4146,491 +3947,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-table" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "tbl-content" }, [
+      _c(
+        "table",
+        { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
+        [
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_vm._v("ubuntu-s-1vcpu-1gb-slo1-01")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("83.2.3.95:8000")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Yesterday")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Node 1 (Slovenia)")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("3")]),
+              _vm._v(" "),
+              _c("td", [_c("start-stop-container-button-component")], 1)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "space-under" }),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("django-s-2vcpu-4gb-ny1-01")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("83.2.3.95:1000")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("3 days ago")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Node 3 (New York)")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("3")]),
+              _vm._v(" "),
+              _c("td", [_c("start-stop-container-button-component")], 1)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "space-under" })
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-table" }, [
-      _c("div", { staticClass: "tbl-header" }, [
-        _c(
-          "table",
-          { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
-          [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("Code")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Company")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Price")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Change")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Change %")])
-              ])
+    return _c("div", { staticClass: "tbl-header" }, [
+      _c(
+        "table",
+        { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
+        [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("Name")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Ip address")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Created")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Location")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Replicas")]),
+              _vm._v(" "),
+              _c("th")
             ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tbl-content" }, [
-        _c(
-          "table",
-          { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
-          [
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAC")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("AUSENCO")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$2.38")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("AAX")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADELAIDE")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$3.22")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+0.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+1.36%")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "space-under" }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_vm._v("XXD")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("ADITYA BIRLA")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1.02")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-1.01")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("+2.36%")])
-              ])
-            ])
-          ]
-        )
-      ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -4661,6 +4050,46 @@ var render = function() {
     [_c("container-table-component")],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        attrs: { type: "button" },
+        on: { click: _vm.toggleOnOff },
+        model: {
+          value: _vm.buttonText,
+          callback: function($$v) {
+            _vm.buttonText = $$v
+          },
+          expression: "buttonText"
+        }
+      },
+      [_vm._v(_vm._s(_vm.buttonText))]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20177,6 +19606,7 @@ var map = {
 	"./components/NavMenuComponent.vue": "./src/main/resources/js/components/NavMenuComponent.vue",
 	"./components/k8s/ContainerTableComponent.vue": "./src/main/resources/js/components/k8s/ContainerTableComponent.vue",
 	"./components/k8s/K8sPageComponent.vue": "./src/main/resources/js/components/k8s/K8sPageComponent.vue",
+	"./components/k8s/StartStopContainerButtonComponent.vue": "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue",
 	"./components/repository/ContainerCardComponent.vue": "./src/main/resources/js/components/repository/ContainerCardComponent.vue",
 	"./components/repository/FileUploadComponent.vue": "./src/main/resources/js/components/repository/FileUploadComponent.vue",
 	"./components/repository/FilterComponent.vue": "./src/main/resources/js/components/repository/FilterComponent.vue",
@@ -20489,6 +19919,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue":
+/*!************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true& */ "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true&");
+/* harmony import */ var _StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StartStopContainerButtonComponent.vue?vue&type=script&lang=js& */ "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "9eb9692a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./StartStopContainerButtonComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StartStopContainerButtonComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true&":
+/*!*******************************************************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true& ***!
+  \*******************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/StartStopContainerButtonComponent.vue?vue&type=template&id=9eb9692a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StartStopContainerButtonComponent_vue_vue_type_template_id_9eb9692a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
