@@ -16,14 +16,17 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 // 1. Define route components.
 const Foo = { template: '<div>foo</div>' }
 const RepositoryPageComponent = resolve => {
-    require.ensure([], require => resolve(require('./components/repository/RepositoryPageComponent.vue')), 'foo');
+    require.ensure([], require => resolve(require('./components/repository/RepositoryPageComponent.vue')));
+};
+const K8sPageComponent = resolve => {
+    require.ensure([], require => resolve(require('./components/k8s/K8sPageComponent.vue')));
 };
 
 // 2. Define routes
 const routes = [
     { path: '/dashboard', component: Foo },
     { path: '/repository', component: RepositoryPageComponent },
-    { path: '/k8s', component: Foo },
+    { path: '/k8s', component: K8sPageComponent },
     { path: '/settings', component: Foo }
 ];
 

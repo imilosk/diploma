@@ -1,8 +1,12 @@
 @import "variables.scss";
 @import "layout.scss";
-@import "repository.scss";
-@import "fileUploadComponent.scss";
-@import "searchComponent.scss";
 @import "../css/fontello.css";
-@import "aselect.scss";
-@import "containerCard.scss";
+
+@import "repository/fileUploadComponent.scss";
+@import "repository/searchComponent.scss";
+@import "repository/aselect.scss";
+@import "repository/containerCard.scss";
+@import "repository/pageRepository.scss";
+
+@import "k8s/containerTable.scss";
+@import "k8s/pageK8s.scss";

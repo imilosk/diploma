@@ -2056,6 +2056,311 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/repository/ContainerCardComponent.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/repository/ContainerCardComponent.vue?vue&type=script&lang=js& ***!
@@ -3717,7 +4022,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "nav-link", attrs: { to: "/kubernetes" } },
+              { staticClass: "nav-link", attrs: { to: "/k8s" } },
               [
                 _c(
                   "svg",
@@ -3820,6 +4125,544 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container-table" }, [
+      _c("div", { staticClass: "tbl-header" }, [
+        _c(
+          "table",
+          { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Code")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Company")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Price")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Change")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Change %")])
+              ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tbl-content" }, [
+        _c(
+          "table",
+          { attrs: { cellpadding: "0", cellspacing: "0", border: "0" } },
+          [
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAC")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSTRALIAN COMPANY ")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("AUSENCO")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$2.38")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("AAX")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADELAIDE")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$3.22")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+0.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+1.36%")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "space-under" }),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("XXD")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("ADITYA BIRLA")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1.02")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("-1.01")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("+2.36%")])
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "--page-k8s" } },
+    [_c("container-table-component")],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -19332,6 +20175,8 @@ module.exports = g;
 
 var map = {
 	"./components/NavMenuComponent.vue": "./src/main/resources/js/components/NavMenuComponent.vue",
+	"./components/k8s/ContainerTableComponent.vue": "./src/main/resources/js/components/k8s/ContainerTableComponent.vue",
+	"./components/k8s/K8sPageComponent.vue": "./src/main/resources/js/components/k8s/K8sPageComponent.vue",
 	"./components/repository/ContainerCardComponent.vue": "./src/main/resources/js/components/repository/ContainerCardComponent.vue",
 	"./components/repository/FileUploadComponent.vue": "./src/main/resources/js/components/repository/FileUploadComponent.vue",
 	"./components/repository/FilterComponent.vue": "./src/main/resources/js/components/repository/FilterComponent.vue",
@@ -19400,6 +20245,12 @@ var RepositoryPageComponent = function RepositoryPageComponent(resolve) {
   Promise.resolve(/*! require.ensure */).then((function (require) {
     return resolve(__webpack_require__(/*! ./components/repository/RepositoryPageComponent.vue */ "./src/main/resources/js/components/repository/RepositoryPageComponent.vue"));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+
+var K8sPageComponent = function K8sPageComponent(resolve) {
+  Promise.resolve(/*! require.ensure */).then((function (require) {
+    return resolve(__webpack_require__(/*! ./components/k8s/K8sPageComponent.vue */ "./src/main/resources/js/components/k8s/K8sPageComponent.vue"));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 }; // 2. Define routes
 
 
@@ -19411,7 +20262,7 @@ var routes = [{
   component: RepositoryPageComponent
 }, {
   path: '/k8s',
-  component: Foo
+  component: K8sPageComponent
 }, {
   path: '/settings',
   component: Foo
@@ -19494,6 +20345,150 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavMenuComponent_vue_vue_type_template_id_58b24ae5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NavMenuComponent_vue_vue_type_template_id_58b24ae5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/ContainerTableComponent.vue":
+/*!**************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/ContainerTableComponent.vue ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true& */ "./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true&");
+/* harmony import */ var _ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContainerTableComponent.vue?vue&type=script&lang=js& */ "./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b4d06ce6",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/main/resources/js/components/k8s/ContainerTableComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContainerTableComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true&":
+/*!*********************************************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true& ***!
+  \*********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/ContainerTableComponent.vue?vue&type=template&id=b4d06ce6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContainerTableComponent_vue_vue_type_template_id_b4d06ce6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/K8sPageComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/K8sPageComponent.vue ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./K8sPageComponent.vue?vue&type=template&id=0ad416db& */ "./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db&");
+/* harmony import */ var _K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./K8sPageComponent.vue?vue&type=script&lang=js& */ "./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/main/resources/js/components/k8s/K8sPageComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./K8sPageComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db&":
+/*!**************************************************************************************************!*\
+  !*** ./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./K8sPageComponent.vue?vue&type=template&id=0ad416db& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/main/resources/js/components/k8s/K8sPageComponent.vue?vue&type=template&id=0ad416db&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_K8sPageComponent_vue_vue_type_template_id_0ad416db___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

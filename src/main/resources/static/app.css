@@ -275,26 +275,6 @@ main {
   display: block;
 }
 
-#\--page-repository .filters-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
-
-#\--page-repository .filters-row .filters {
-  display: flex;
-}
-
-#\--page-repository .containers-row {
-  width: 75%;
-  margin: 0 auto;
-}
-
-#\--page-repository .containers-row .container-card {
-  margin-bottom: 25px;
-}
-
 .vue-dropzone {
   display: flex !important;
   align-items: center !important;
@@ -591,5 +571,98 @@ main {
 
 .container-card .container-info p {
   font-size: 14px;
+}
+
+#\--page-repository .filters-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+#\--page-repository .filters-row .filters {
+  display: flex;
+}
+
+#\--page-repository .containers-row {
+  width: 75%;
+  margin: 0 auto;
+}
+
+#\--page-repository .containers-row .container-card {
+  margin-bottom: 25px;
+}
+
+.container-table {
+  margin: 0 auto;
+  width: 75%;
+  /* for custom scrollbar for webkit browser*/
+}
+
+.container-table table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.container-table .tbl-header {
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  height: 62px;
+  margin-bottom: 20px;
+}
+
+.container-table .tbl-content {
+  margin-top: 0px;
+}
+
+.container-table th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.container-table td {
+  padding: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  height: 90px;
+  border-top: 1px solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.container-table tr td:first-of-type {
+  border-left: 1px solid #D9D9D9;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border-right: none;
+}
+
+.container-table tr td:last-of-type {
+  border-right: 1px solid #D9D9D9;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  border-left: none;
+}
+
+.container-table .space-under {
+  margin-bottom: 15px;
+}
+
+.container-table ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container-table ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px black;
+}
+
+.container-table ::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px black;
 }
 
