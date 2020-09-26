@@ -1,5 +1,6 @@
 <template>
         <div id="--page-repository">
+                <p class="page-title">Repository</p>
                 <file-upload-component></file-upload-component>
                 <div class="filters-row">
                         <search-component></search-component>

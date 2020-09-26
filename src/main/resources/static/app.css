@@ -89,6 +89,17 @@ main {
   padding: 1rem;
 }
 
+.page-title {
+  font-weight: 800;
+  font-size: 22px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
 .navbar {
   position: fixed;
   background-color: var(--bg-primary);
@@ -664,5 +675,38 @@ main {
 
 .container-table ::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px black;
+}
+
+#\--page-k8s .button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 225px;
+  margin-bottom: 75px;
+}
+
+.my-button {
+  width: 115px;
+  height: 35px;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  outline: none;
+}
+
+.start-container-button {
+  border-color: rgba(0, 150, 136, 0.8);
+  background-color: rgba(0, 150, 136, 0.8);
+}
+
+.stop-container-button {
+  border-color: #f67b65;
+  background-color: #f67b65;
+}
+
+.createDeploymentButton {
+  width: 175px;
+  height: 50px;
+  border-color: rgba(0, 150, 136, 0.8);
+  background-color: rgba(0, 150, 136, 0.8);
 }
 

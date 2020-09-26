@@ -32,6 +32,15 @@ main {
   padding: 1rem;
 }
 
+.page-title {
+  font-weight: 800;
+  font-size: 22px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
 .navbar {
   position: fixed;
   background-color: var(--bg-primary);

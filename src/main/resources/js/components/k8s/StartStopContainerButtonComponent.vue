@@ -1,26 +1,35 @@
 <template>
     <div>
-        <button type="button" @click="toggleOnOff" v-model="buttonText">{{ buttonText }}</button>
+        <button type="button" class="my-button" v-bind:class="buttonBackgroundClass" @click="toggleOnOff" v-model="buttonText">{{ buttonText }}</button>
     </div>
 </template>
 
 <script>
 export default {
     data () {
+        const startContainerText = 'Start container';
+        const buttonStartBackgroundClass = 'start-container-button';
         return {
-            startContainerText: 'Start container',
+            startContainerText: startContainerText,
             stopContainerText: 'Stop container',
             isStarted:  false,
-            buttonText: 'Start container',
+            buttonText: startContainerText,
+            buttonBackgroundClass: buttonStartBackgroundClass,
+            buttonStartBackgroundClass: buttonStartBackgroundClass,
+            buttonStopBackgroundClass: 'stop-container-button',
         }
     },
     methods: {
         setButtonText: function() {
             this.buttonText = this.isStarted ? this.stopContainerText : this.startContainerText;
         },
+        setButtonBackgroundColor: function () {
+            this.buttonBackgroundClass = this.isStarted ? this.buttonStopBackgroundClass : this.buttonStartBackgroundClass;
+        },
         toggleOnOff: function () {
             this.isStarted = !this.isStarted;
             this.setButtonText();
+            this.setButtonBackgroundColor();
         }
     }
 }
