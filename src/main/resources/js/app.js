@@ -2,8 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import vue2Dropzone from 'vue2-dropzone';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+import VueApexCharts from 'vue-apexcharts'
 
 Vue.component('vue-dropzone', vue2Dropzone);
+Vue.component('apexchart', VueApexCharts)
 Vue.use(VueRouter);
 
 window.axios = require('axios');
@@ -21,10 +23,13 @@ const RepositoryPageComponent = resolve => {
 const K8sPageComponent = resolve => {
     require.ensure([], require => resolve(require('./components/k8s/K8sPageComponent.vue')));
 };
+const DashboardPageComponent = resolve => {
+    require.ensure([], require => resolve(require('./components/dashboard/DashboardPageComponent.vue')));
+};
 
 // 2. Define routes
 const routes = [
-    { path: '/dashboard', component: Foo },
+    { path: '/dashboard', component: DashboardPageComponent },
     { path: '/repository', component: RepositoryPageComponent },
     { path: '/k8s', component: K8sPageComponent },
     { path: '/settings', component: Foo }
@@ -37,6 +42,6 @@ const router = new VueRouter({
 
 // 4. Create and mount the root instance.
 const app = new Vue({
-    router
+    router,
 }).$mount('#app');
 // Now the app has started!

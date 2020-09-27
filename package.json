@@ -27,9 +27,11 @@
     "vuetifyjs-mix-extension": "0.0.14"
   },
   "dependencies": {
+    "apexcharts": "^3.21.0",
     "axios": "^0.19.2",
     "material-design-icons-iconfont": "^6.1.0",
     "vue": "^2.6.11",
+    "vue-apexcharts": "^1.6.0",
     "vue-router": "^3.4.3",
     "vue2-dropzone": "^3.6.0"
   }
