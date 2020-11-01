@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="my-button createDeploymentButton" @click="toggleOnOff">Create new deployment</button>
+        <button type="button" class="my-button createDeploymentButton" @click="openModal">Create new deployment</button>
     </div>
 </template>
 
@@ -12,8 +12,8 @@ export default {
         }
     },
     methods: {
-        toggleOnOff: function () {
-
+        openModal: function () {
+            this.$emit('openModal')
         }
     }
 }
