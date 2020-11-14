@@ -5,7 +5,7 @@
        url(/fonts/fontello.woff2?70d9cf707c5ad392ea96d5343cdf0293) format('woff2'),
        url(/fonts/fontello.woff?54ed95449bcd271ffacaf1d1dd9a3816) format('woff'),
        url(/fonts/fontello.ttf?496b2bc575b008e10e6803fd7e73def5) format('truetype'),
-       url(/fonts/fontello.svg?5f74b4cc410ef33c3a50f165c12c7470#fontello) format('svg');
+       url(/fonts/fontello.svg?18d771ea77286e7eede996964a7c6d91#fontello) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -133,14 +133,12 @@ main {
   height: 5rem;
   color: var(--text-primary);
   text-decoration: none;
-  -webkit-filter: grayscale(100%) opacity(0.7);
-          filter: grayscale(100%) opacity(0.7);
+  filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
 }
 
 .nav-link:hover {
-  -webkit-filter: grayscale(0%) opacity(1);
-          filter: grayscale(0%) opacity(1);
+  filter: grayscale(0%) opacity(1);
   background: var(--bg-secondary);
   color: var(--text-secondary);
 }
