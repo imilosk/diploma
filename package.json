@@ -21,12 +21,10 @@
     "resolve-url-loader": "^3.1.2",
     "sass": "^1.26.9",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify": "^2.3.10",
-    "vuetify-loader": "^1.6.0",
-    "vuetifyjs-mix-extension": "0.0.14"
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
+    "@deveodk/vue-toastr": "^1.1.0",
     "apexcharts": "^3.21.0",
     "axios": "^0.19.2",
     "material-design-icons-iconfont": "^6.1.0",

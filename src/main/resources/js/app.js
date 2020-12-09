@@ -2,11 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import vue2Dropzone from 'vue2-dropzone';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
-import VueApexCharts from 'vue-apexcharts'
+import VueApexCharts from 'vue-apexcharts';
+import VueToastr from '@deveodk/vue-toastr';
+import '@deveodk/vue-toastr/dist/@deveodk/vue-toastr.css';
 
 Vue.component('vue-dropzone', vue2Dropzone);
 Vue.component('apexchart', VueApexCharts)
 Vue.use(VueRouter);
+Vue.use(VueToastr);
 
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

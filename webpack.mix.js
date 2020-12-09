@@ -1,6 +1,4 @@
 let mix = require('laravel-mix');
-
-require('vuetifyjs-mix-extension')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,8 +12,7 @@ require('vuetifyjs-mix-extension')
 
 mix.js('./src/main/resources/js/app.js', './src/main/resources/static').
     sass('./src/main/resources/sass/app.scss', './src/main/resources/static').
-    vuetify('vuetify-loader')
-    .setPublicPath('./src/main/resources/static');
+    setPublicPath('./src/main/resources/static');
 
 // Full API
 // mix.js(src, output);

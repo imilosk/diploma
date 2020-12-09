@@ -1,5 +1,6 @@
 package fri.diplomska.diplomska.kubernetes;
 
+import io.fabric8.kubernetes.api.model.IntOrString;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.ServiceAccount;
 import io.fabric8.kubernetes.api.model.ServiceAccountBuilder;
@@ -23,48 +24,55 @@ public class Deployer {
 
         Deployment deployment = new DeploymentBuilder()
                 .withNewMetadata()
-                .withName("diplomska")
+                    .withName("diplomska")
                 .endMetadata()
                 .withNewSpec()
-                .withReplicas(1)
-                .withNewTemplate()
-                .withNewMetadata()
-                .addToLabels("app", "diplomska")
-                .endMetadata()
-                .withNewSpec()
-                .addNewContainer()
-                .withName("diplomska")
-                .withImage("diplomska:v1")
-                .addNewPort()
-                .withContainerPort(8888)
-                .endPort()
-                .endContainer()
-                .endSpec()
-                .endTemplate()
-                .withNewSelector()
-                .addToMatchLabels("app", "diplomska")
-                .endSelector()
+                    .withReplicas(1)
+                    .withNewTemplate()
+                            .withNewMetadata()
+                                .addToLabels("app", "diplomska")
+                            .endMetadata()
+                        .withNewSpec()
+                            .addNewContainer()
+                                .withName("diplomska")
+                                .withImage("diplomska:v3")
+                                .addNewPort()
+                                    .withContainerPort(8888)
+                                .endPort()
+                            .endContainer()
+                        .endSpec()
+                    .endTemplate()
+                    .withNewSelector()
+                        .addToMatchLabels("app", "diplomska")
+                    .endSelector()
                 .endSpec()
                 .build();
 
         deployment = client.apps().deployments().inNamespace("default").createOrReplace(deployment);
         System.out.println("Created deployment: " + deployment);
-
     }
 
     private void createK8sService(KubernetesClient client) {
         Service createdSvc = client.services().inNamespace("default").createOrReplaceWithNew()
-                .withNewMetadata().withName("diplomskaservice").endMetadata()
-                .withNewSpec().withType("LoadBalancer").withExternalName("localhost")
-                .addNewPort().withName("8080").withProtocol("TCP").withPort(8888).endPort()
-                .addToSelector("app", "diplomska")
+                .withNewMetadata().
+                        withName("diplomskaservice").
+                endMetadata()
+                .withNewSpec().
+                        withType("LoadBalancer").
+                        withExternalName("my.nodejs.app")
+                        .addNewPort().
+                            withName("9999").
+                            withProtocol("TCP").
+                            withPort(9999).
+                            withTargetPort(new IntOrString(8888)).
+                        endPort()
+                    .addToSelector("app", "diplomska")
                 .endSpec()
                 .withNewStatus()
-                .withNewLoadBalancer()
-                .addNewIngress()
-                .withIp("10.104.84.57")
-                .endIngress()
-                .endLoadBalancer()
+                    .withNewLoadBalancer()
+                        .addNewIngress()
+                        .endIngress()
+                    .endLoadBalancer()
                 .endStatus()
                 .done();
 

@@ -19,8 +19,8 @@ public class FileUploadController {
         try {
             ImageBuilder imageBuilder = new ImageBuilder();
             String fileFolder = Helper.getProjectPath() + "docker" + File.separator;
-            String filePathToSave = fileFolder +  File.separator + "Dockerfile";
-            file.transferTo(new File(filePathToSave));
+            //String filePathToSave = fileFolder +  File.separator + "Dockerfile";
+            //file.transferTo(new File(filePathToSave));
             String imageId = imageBuilder.build(fileFolder);
             Deployer deployer = new Deployer();
             deployer.deploy(imageId);

@@ -23,7 +23,7 @@ public class ImageBuilder {
                     build();
             final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
             final String returnedImageId = docker.build(
-                    Paths.get(filePath), "diplomska:v1", new ProgressHandler() {
+                    Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
                         @Override
                         public void progress(ProgressMessage message) {
                             final String imageId = message.buildImageId();
