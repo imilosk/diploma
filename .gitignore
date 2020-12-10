@@ -37,4 +37,5 @@ build/
 .mvn
 
 /src/main/resources/static/
+/docker
 
