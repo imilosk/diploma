@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -21,13 +22,13 @@ public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.POST )
-    public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> index(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
         try {
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
 
             // path to the file
-            String fileFolder = Helper.getProjectPath() + "docker" + File.separator + folderName + File.separator;
+            String fileFolder = Helper.getProjectPath(request) + "docker" + File.separator + folderName + File.separator;
 
             // create a new directory on the server FS
             Files.createDirectory(Paths.get(fileFolder));
