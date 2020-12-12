@@ -9,7 +9,7 @@ public class Helper {
 
     public static String getProjectPath(HttpServletRequest request) {
         Path currentWorkingDir = Paths.get("webapps").toAbsolutePath();
-        return currentWorkingDir.normalize().toString() + File.separator + request.getContextPath();
+        return currentWorkingDir.normalize().toString() + File.separator + request.getContextPath() + File.separator;
     }
 
 }
