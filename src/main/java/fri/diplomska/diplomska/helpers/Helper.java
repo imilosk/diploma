@@ -8,8 +8,8 @@ import java.nio.file.Paths;
 public class Helper {
 
     public static String getProjectPath(HttpServletRequest request) {
-        Path currentWorkingDir = Paths.get("").toAbsolutePath();
-        return currentWorkingDir.normalize().toString() + File.separator + request.getContextPath() + File.separator;
+        Path currentWorkingDir = Paths.get("webapps").toAbsolutePath();
+        return currentWorkingDir.normalize().toString() + File.separator + request.getContextPath();
     }
 
 }
