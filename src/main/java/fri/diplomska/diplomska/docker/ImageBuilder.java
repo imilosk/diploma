@@ -18,7 +18,7 @@ public class ImageBuilder {
 
     public String build(String filePath) throws Exception {
         final DockerClient docker = DefaultDockerClient.fromEnv().
-                dockerCertificates(new DockerCertificates(Paths.get("/root/.docker/"))).
+                //dockerCertificates(new DockerCertificates(Paths.get("/root/.docker/"))).
                 build();
 
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
