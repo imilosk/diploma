@@ -28,16 +28,15 @@ public class FileUploadController {
             String folderName = UUID.randomUUID().toString();
 
             // path to the file
-            String fileFolder = Helper.getProjectPath(request) + "docker" + File.separator + folderName + File.separator;
+            String fileFolder = File.separator + "docker" + File.separator + folderName + File.separator;
 
             // create a new directory on the server FS
             Files.createDirectory(Paths.get(fileFolder));
             // save the zip file to the server FS
             Path filePathToSave = Paths.get(fileFolder, "image.zip");
 
-            try (OutputStream os = Files.newOutputStream(filePathToSave)) {
-                os.write(file.getBytes());
-            }
+            byte[] bytes = file.getBytes();
+            Files.write(filePathToSave, bytes);
 
             // unzip the files
             new ZipFile(filePathToSave.toString()).extractAll(fileFolder);
