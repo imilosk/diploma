@@ -22,13 +22,13 @@ public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.POST )
-    public ResponseEntity<String> index(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
 
             // path to the file
-            String fileFolder = "/tmp/" + folderName;
+            String fileFolder = Helper.getProjectPath() + folderName;
 
             // create a new directory on the server FS
             Files.createDirectory(Paths.get(fileFolder));
@@ -43,8 +43,8 @@ public class FileUploadController {
 
             ImageBuilder imageBuilder = new ImageBuilder();
             String imageId = imageBuilder.build(fileFolder);
-            Deployer deployer = new Deployer();
-            deployer.deploy(imageId);
+//            Deployer deployer = new Deployer();
+//            deployer.deploy(imageId);
         } catch(Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

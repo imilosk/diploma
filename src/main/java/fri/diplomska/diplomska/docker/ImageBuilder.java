@@ -16,10 +16,8 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ImageBuilder {
 
     public String build(String filePath) throws Exception {
-        final DockerClient docker = DefaultDockerClient.
-                builder().
-                uri(URI.create("http://localhost:2375")).
-                build();
+        final DockerClient docker = DefaultDockerClient.fromEnv().build();
+        
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
                 Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
