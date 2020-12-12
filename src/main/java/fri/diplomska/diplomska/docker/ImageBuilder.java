@@ -17,7 +17,7 @@ public class ImageBuilder {
 
     public String build(String filePath) throws Exception {
         final DockerClient docker = DefaultDockerClient.fromEnv().build();
-        
+
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
                 Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
@@ -29,6 +29,8 @@ public class ImageBuilder {
                         }
                     }
                 });
+        docker.tag(returnedImageId, "repo.diplomska.test:5000/milos/diplomska:v3");
+        docker.push("repo.diplomska.test:5000/milos/diplomska:v3");
         return returnedImageId;
     }
 
