@@ -13,7 +13,7 @@ public class Helper {
     private static String path;
 
     public static String getFileUploadFolder(HttpServletRequest request) {
-        return "/var/lib/tomcat9/upload";
+        return "/var/lib/tomcat9/upload/";
     }
 
 }

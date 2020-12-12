@@ -28,7 +28,7 @@ public class FileUploadController {
             String folderName = UUID.randomUUID().toString();
 
             // path to the file
-            String fileFolder = Helper.getFileUploadFolder(request);
+            String fileFolder = Helper.getFileUploadFolder(request) + folderName;
 
             // create a new directory on the server FS
             Files.createDirectory(Paths.get(fileFolder));
