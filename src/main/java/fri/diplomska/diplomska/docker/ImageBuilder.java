@@ -29,7 +29,7 @@ public class ImageBuilder {
                         }
                     }
                 });
-        docker.tag("diplomska", "repo.diploma.test:5000/milos/diplomska:v3");
+        docker.tag(returnedImageId, "repo.diploma.test:5000/milos/diplomska:v3");
         docker.push("repo.diploma.test:5000/milos/diplomska:v3");
         return returnedImageId;
     }
