@@ -8,7 +8,7 @@ public class Helper {
 
     public static String getProjectPath() {
         Path currentWorkingDir = Paths.get("").toAbsolutePath();
-        return currentWorkingDir.normalize().toString() + File.separator;
+        return new File("").getAbsolutePath() + File.separator;
     }
 
 }
