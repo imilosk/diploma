@@ -28,7 +28,7 @@ public class FileUploadController {
             String folderName = UUID.randomUUID().toString();
 
             // path to the file
-            String fileFolder = File.separator + "docker" + File.separator + folderName + File.separator;
+            String fileFolder = Helper.getFileUploadFolder(request);
 
             // create a new directory on the server FS
             Files.createDirectory(Paths.get(fileFolder));
