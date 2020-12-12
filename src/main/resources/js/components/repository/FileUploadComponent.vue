@@ -17,7 +17,7 @@
         data () {
             return {
                 dropzoneOptions: {
-                    url: "/uploadDockerImage",
+                    url: "/app/uploadDockerImage",
                     createImageThumbnails: false,
                     uploadMultiple: false,
                     thumbnailWidth: 60,
