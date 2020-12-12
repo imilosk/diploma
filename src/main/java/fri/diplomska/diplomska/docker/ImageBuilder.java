@@ -15,32 +15,23 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class ImageBuilder {
 
-    public String build(String filePath) {
-        try {
-            final DockerClient docker = DefaultDockerClient.
-                    builder().
-                    uri(URI.create("http://localhost:2375")).
-                    build();
-            final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
-            final String returnedImageId = docker.build(
-                    Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
-                        @Override
-                        public void progress(ProgressMessage message) {
-                            final String imageId = message.buildImageId();
-                            if (imageId != null) {
-                                imageIdFromMessage.set(imageId);
-                            }
+    public String build(String filePath) throws Exception {
+        final DockerClient docker = DefaultDockerClient.
+                builder().
+                uri(URI.create("http://localhost:2375")).
+                build();
+        final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
+        final String returnedImageId = docker.build(
+                Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
+                    @Override
+                    public void progress(ProgressMessage message) {
+                        final String imageId = message.buildImageId();
+                        if (imageId != null) {
+                            imageIdFromMessage.set(imageId);
                         }
-                    });
-            return returnedImageId;
-        } catch (DockerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return null;
+                    }
+                });
+        return returnedImageId;
     }
 
 }
