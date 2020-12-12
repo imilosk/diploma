@@ -1,7 +1,9 @@
 <template>
     <vue-dropzone id="dropzone" :options="dropzoneOptions" :useCustomSlot=true
                   v-on:vdropzone-success="onSuccessUpload"
-                  v-on:vdropzone-file-added="onBeforeUpload">
+                  v-on:vdropzone-file-added="onBeforeUpload"
+                  v-on:vdropzone-error="onFailUpload"
+    >
 
         <div class="dropzone-custom-content">
             <h3 class="dropzone-custom-title">Drag and drop your Dockerfile here!</h3>
@@ -28,7 +30,7 @@
               this.$toastr('add', {
                 title: 'Message',
                 msg: 'Your image is being build',
-                timeout: 2000,
+                timeout: 5000,
                 type: 'info',
                 position: 'toast-top-right',
                 closeOnHover: true,
@@ -39,13 +41,25 @@
               this.$toastr('add', {
                 title: 'Message',
                 msg: 'Your image was build successfully',
-                timeout: 2000,
+                timeout: 5000,
                 type: 'success',
                 position: 'toast-top-right',
                 closeOnHover: true,
                 clickClose: false
               });
-            }
+            },
+          onFailUpload(file, message, xhr) {
+            this.$toastr('add', {
+              title: 'Message',
+              msg: xhr.responseText,
+              timeout: 5000,
+              type: 'error',
+              position: 'toast-top-right',
+              closeOnHover: true,
+              clickClose: false
+            });
+          }
+
         }
     }
 </script>
