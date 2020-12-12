@@ -11,7 +11,7 @@
 	<groupId>fri.diplomska</groupId>
 	<artifactId>diplomska</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>diplomska</name>
 	<description>Diplomsko delo</description>
 
