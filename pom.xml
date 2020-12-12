@@ -75,6 +75,11 @@
 			<artifactId>zip4j</artifactId>
 			<version>2.6.4</version>
 		</dependency>
+		<dependency>
+			<groupId>io.takari</groupId>
+			<artifactId>maven-wrapper</artifactId>
+			<version>0.5.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
