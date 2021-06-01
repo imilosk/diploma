@@ -35,9 +35,9 @@ public class Deployer {
                         .withNewSpec()
                             .addNewContainer()
                                 .withName("diplomska")
-                                .withImage("diplomska:v3")
+                                .withImage("nodejs_test:v1")
                                 .addNewPort()
-                                    .withContainerPort(8888)
+                                    .withContainerPort(8080)
                                 .endPort()
                             .endContainer()
                         .endSpec()
@@ -64,7 +64,7 @@ public class Deployer {
                             withName("9999").
                             withProtocol("TCP").
                             withPort(9999).
-                            withTargetPort(new IntOrString(8888)).
+                            withTargetPort(new IntOrString(8080)).
                         endPort()
                     .addToSelector("app", "diplomska")
                 .endSpec()

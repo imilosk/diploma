@@ -1,39 +1,24 @@
 package fri.diplomska.diplomska.docker;
 
 import com.spotify.docker.client.DefaultDockerClient;
-import com.spotify.docker.client.DockerCertificates;
 import com.spotify.docker.client.DockerClient;
-import com.spotify.docker.client.ProgressHandler;
-import com.spotify.docker.client.exceptions.DockerCertificateException;
-import com.spotify.docker.client.exceptions.DockerException;
-import com.spotify.docker.client.messages.ProgressMessage;
-import fri.diplomska.diplomska.helpers.Helper;
-
-import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ImageBuilder {
 
-    public String build(String filePath) throws Exception {
+    public String build(String filePath, String imageName) throws Exception {
         final DockerClient docker = DefaultDockerClient.fromEnv().
-                //dockerCertificates(new DockerCertificates(Paths.get("/root/.docker/"))).
                 build();
 
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
-                Paths.get(filePath), "diplomska:v3", new ProgressHandler() {
-                    @Override
-                    public void progress(ProgressMessage message) {
-                        final String imageId = message.buildImageId();
-                        if (imageId != null) {
-                            imageIdFromMessage.set(imageId);
-                        }
+                Paths.get(filePath), imageName, message -> {
+                    final String imageId = message.buildImageId();
+                    if (imageId != null) {
+                        imageIdFromMessage.set(imageId);
                     }
                 });
-        docker.tag(returnedImageId, "repo.diploma.test:5000/milos/diplomska:v3");
-        docker.push("repo.diploma.test:5000/milos/diplomska:v3");
         return returnedImageId;
     }
 

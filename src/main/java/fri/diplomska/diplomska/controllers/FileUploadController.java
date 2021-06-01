@@ -21,7 +21,7 @@ import java.util.UUID;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @RequestMapping(value = "/uploadDockerImage", method  = RequestMethod.POST )
+    @RequestMapping(value = "/app/uploadDockerImage", method  = RequestMethod.POST )
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             // create a random UUID for folder name
@@ -41,10 +41,12 @@ public class FileUploadController {
             // unzip the files
             new ZipFile(filePathToSave.toString()).extractAll(fileFolder);
 
+            String imageName = "nodejs_test:v1";
+
             ImageBuilder imageBuilder = new ImageBuilder();
-            String imageId = imageBuilder.build(fileFolder);
-//            Deployer deployer = new Deployer();
-//            deployer.deploy(imageId);
+            String imageId = imageBuilder.build(fileFolder, imageName);
+            Deployer deployer = new Deployer();
+            deployer.deploy(imageId);
         } catch(Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
