@@ -2,7 +2,6 @@ package fri.diplomska.diplomska.helpers;
 
 import org.apache.commons.lang.SystemUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;

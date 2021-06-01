@@ -19,7 +19,7 @@ const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 // 1. Define route components.
-const Foo = { template: '<div>foo</div>' }
+const Foo = {template: '<div>foo</div>'}
 const RepositoryPageComponent = resolve => {
     require.ensure([], require => resolve(require('./components/repository/RepositoryPageComponent.vue')));
 };
@@ -32,10 +32,10 @@ const DashboardPageComponent = resolve => {
 
 // 2. Define routes
 const routes = [
-    { path: '/dashboard', component: DashboardPageComponent },
-    { path: '/repository', component: RepositoryPageComponent },
-    { path: '/k8s', component: K8sPageComponent },
-    { path: '/settings', component: Foo }
+    {path: '/dashboard', component: DashboardPageComponent},
+    {path: '/repository', component: RepositoryPageComponent},
+    {path: '/k8s', component: K8sPageComponent},
+    {path: '/settings', component: Foo}
 ];
 
 // 3. Create the router instance and pass the `routes` option

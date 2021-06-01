@@ -24,27 +24,27 @@ public class Deployer {
 
         Deployment deployment = new DeploymentBuilder()
                 .withNewMetadata()
-                    .withName("diplomska")
+                .withName("diplomska")
                 .endMetadata()
                 .withNewSpec()
-                    .withReplicas(1)
-                    .withNewTemplate()
-                            .withNewMetadata()
-                                .addToLabels("app", "diplomska")
-                            .endMetadata()
-                        .withNewSpec()
-                            .addNewContainer()
-                                .withName("diplomska")
-                                .withImage("nodejs_test:v1")
-                                .addNewPort()
-                                    .withContainerPort(8080)
-                                .endPort()
-                            .endContainer()
-                        .endSpec()
-                    .endTemplate()
-                    .withNewSelector()
-                        .addToMatchLabels("app", "diplomska")
-                    .endSelector()
+                .withReplicas(1)
+                .withNewTemplate()
+                .withNewMetadata()
+                .addToLabels("app", "diplomska")
+                .endMetadata()
+                .withNewSpec()
+                .addNewContainer()
+                .withName("diplomska")
+                .withImage("nodejs_test:v1")
+                .addNewPort()
+                .withContainerPort(8080)
+                .endPort()
+                .endContainer()
+                .endSpec()
+                .endTemplate()
+                .withNewSelector()
+                .addToMatchLabels("app", "diplomska")
+                .endSelector()
                 .endSpec()
                 .build();
 
@@ -56,23 +56,23 @@ public class Deployer {
         Service createdSvc = client.services().inNamespace("default").createOrReplaceWithNew()
                 .withNewMetadata().
                         withName("diplomskaservice").
-                endMetadata()
+                        endMetadata()
                 .withNewSpec().
                         withType("LoadBalancer").
                         withExternalName("my.nodejs.app")
-                        .addNewPort().
-                            withName("9999").
-                            withProtocol("TCP").
-                            withPort(9999).
-                            withTargetPort(new IntOrString(8080)).
+                .addNewPort().
+                        withName("9999").
+                        withProtocol("TCP").
+                        withPort(9999).
+                        withTargetPort(new IntOrString(10006)).
                         endPort()
-                    .addToSelector("app", "diplomska")
+                .addToSelector("app", "diplomska")
                 .endSpec()
                 .withNewStatus()
-                    .withNewLoadBalancer()
-                        .addNewIngress()
-                        .endIngress()
-                    .endLoadBalancer()
+                .withNewLoadBalancer()
+                .addNewIngress()
+                .endIngress()
+                .endLoadBalancer()
                 .endStatus()
                 .done();
 
