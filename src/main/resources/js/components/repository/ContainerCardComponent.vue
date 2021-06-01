@@ -1,7 +1,7 @@
 <template>
   <div class="container-card">
     <div class="image">
-      <img :src=imgPath/>
+      <img :src=imgPath />
     </div>
     <div class="container-info">
       <p>{{ name }}</p>

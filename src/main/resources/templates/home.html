@@ -16,3 +16,8 @@
 <script th:src="@{/app.js}" type="application/javascript"></script>
 </body>
 </html>
+
+<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+    ...
+    <property name="cacheable" value="false"/>
+</bean>
