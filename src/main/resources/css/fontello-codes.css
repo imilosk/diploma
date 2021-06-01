@@ -1,2 +1,6 @@
 
-.icon-search:before { content: '\e800'; } /* '' */
+.icon-search:before {
+    content: '\e800';
+}
+
+/* '' */

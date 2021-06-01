@@ -9,9 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,7 +18,7 @@ import java.util.UUID;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @RequestMapping(value = "/app/uploadDockerImage", method  = RequestMethod.POST )
+    @RequestMapping(value = "/app/uploadDockerImage", method = RequestMethod.POST)
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             // create a random UUID for folder name
@@ -47,7 +44,7 @@ public class FileUploadController {
             String imageId = imageBuilder.build(fileFolder, imageName);
             Deployer deployer = new Deployer();
             deployer.deploy(imageId);
-        } catch(Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<String>("success", HttpStatus.OK);

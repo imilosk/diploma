@@ -1,18 +1,18 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Getting Started: Serving Web Content</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" th:href="@{/app.css}" />
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/app.css}" type="text/css"/>
 
-    </head>
-    <body>
-    <div id="app">
-        <nav-menu-component></nav-menu-component>
-        <main>
-            <router-view></router-view>
-        </main>
-    </div>
-    <script type="application/javascript" th:src="@{/app.js}"></script>
-    </body>
+</head>
+<body>
+<div id="app">
+    <nav-menu-component></nav-menu-component>
+    <main>
+        <router-view></router-view>
+    </main>
+</div>
+<script th:src="@{/app.js}" type="application/javascript"></script>
+</body>
 </html>
