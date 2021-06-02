@@ -18,11 +18,6 @@ public class Deployer {
 
     public void deploy(String imageName, String deploymentName, int containerPort, int servicePort) throws DockerCertificateException, DockerException, InterruptedException {
         KubernetesClient client = new DefaultKubernetesClient();
-        final DockerClient docker = DefaultDockerClient.fromEnv().
-                build();
-
-        ImageInfo imageInfo = docker.inspectImage("03abbbbaefc0");
-        String testName = imageInfo.config().domainname();
 
         String namespace = "default";
         String serviceName = deploymentName + "service";
