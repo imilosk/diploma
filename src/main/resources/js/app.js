@@ -29,13 +29,17 @@ const K8sPageComponent = resolve => {
 const DashboardPageComponent = resolve => {
     require.ensure([], require => resolve(require('./components/dashboard/DashboardPageComponent.vue')));
 };
+const UploadContainerPageComponent = resolve => {
+    require.ensure([], require => resolve(require('./components/repository/uploadNewImage/UploadContainerPageComponent.vue')));
+};
 
 // 2. Define routes
 const routes = [
     {path: '/dashboard', component: DashboardPageComponent},
     {path: '/repository', component: RepositoryPageComponent},
     {path: '/k8s', component: K8sPageComponent},
-    {path: '/settings', component: Foo}
+    {path: '/uploadContainer', component: UploadContainerPageComponent},
+    {path: '/settings', component: Foo},
 ];
 
 // 3. Create the router instance and pass the `routes` option

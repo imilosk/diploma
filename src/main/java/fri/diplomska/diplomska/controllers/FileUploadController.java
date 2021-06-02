@@ -21,6 +21,8 @@ public class FileUploadController {
     @RequestMapping(value = "/app/uploadDockerImage", method = RequestMethod.POST)
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
+            String imageName = "nodejs_test:v1";
+
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
 
@@ -38,12 +40,10 @@ public class FileUploadController {
             // unzip the files
             new ZipFile(filePathToSave.toString()).extractAll(fileFolder);
 
-            String imageName = "nodejs_test:v1";
-
             ImageBuilder imageBuilder = new ImageBuilder();
             String imageId = imageBuilder.build(fileFolder, imageName);
-            Deployer deployer = new Deployer();
-            deployer.deploy(imageId);
+            System.out.println(imageId);
+
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
