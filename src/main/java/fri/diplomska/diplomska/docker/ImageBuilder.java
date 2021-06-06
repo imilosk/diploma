@@ -14,12 +14,12 @@ public class ImageBuilder {
 
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
-                Paths.get(filePath), imageName, message -> {
-                    final String imageId = message.buildImageId();
-                    if (imageId != null) {
-                        imageIdFromMessage.set(imageId);
-                    }
-                });
+            Paths.get(filePath), imageName, message -> {
+                final String imageId = message.buildImageId();
+                if (imageId != null) {
+                    imageIdFromMessage.set(imageId);
+                }
+            });
         return returnedImageId;
     }
 
