@@ -1,5 +1,13 @@
 <template>
   <div class="py-12 align-middle inline-block min-w-full sm:px-6 lg:px-24">
+    <router-link to="/uploadImage">
+      <button
+          type="submit"
+          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"
+      >
+        Upload a new image
+      </button>
+    </router-link>
     <div class="flex justify-between mt-1 mb-10">
       <div class="search-box">
         <label class=" block text-sm font-medium text-gray-700">

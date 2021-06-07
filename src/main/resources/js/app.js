@@ -36,7 +36,7 @@ const routes = [
     {path: '/dashboard', component: DashboardPageComponent},
     {path: '/repository', component: RepositoryPageComponent},
     {path: '/k8s', component: K8sPageComponent},
-    {path: '/uploadContainer', component: UploadContainerPageComponent},
+    {path: '/uploadImage', component: UploadContainerPageComponent},
     {path: '/settings', component: Foo},
 ];
 
