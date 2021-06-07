@@ -18,7 +18,7 @@ import java.util.UUID;
 public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
-    @RequestMapping(value = "/app/uploadDockerImage", method = RequestMethod.POST)
+    @RequestMapping(value = "/app/uploadImage", method = RequestMethod.POST)
     public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
         try {
             String imageName = "nodejs_test:v1";
