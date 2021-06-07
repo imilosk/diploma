@@ -104,6 +104,9 @@ export default {
   methods: {
     submitButtonClicked: function (e) {
       e.preventDefault();
+      axios.post('/app/uploadImage', {
+        imageName: this.imageName
+      });
     }
   }
 }

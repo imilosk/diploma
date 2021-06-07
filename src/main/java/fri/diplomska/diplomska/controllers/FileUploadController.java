@@ -19,9 +19,11 @@ public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/uploadImage", method = RequestMethod.POST)
-    public ResponseEntity<String> index(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> index(@RequestParam("imageName") String imageName,
+                                        @RequestParam("imageTag") String imageTag,
+                                        @RequestParam("additionalArgs") String additionalArgs,
+                                        @RequestParam("file") MultipartFile file) {
         try {
-            String imageName = "nodejs_test:v1";
 
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
@@ -41,7 +43,7 @@ public class FileUploadController {
             new ZipFile(filePathToSave.toString()).extractAll(fileFolder);
 
             ImageBuilder imageBuilder = new ImageBuilder();
-            String imageId = imageBuilder.build(fileFolder, imageName);
+            String imageId = imageBuilder.build(fileFolder, imageName, imageTag, additionalArgs);
             System.out.println(imageId);
 
         } catch (Exception e) {

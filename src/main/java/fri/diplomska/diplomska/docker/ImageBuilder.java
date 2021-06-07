@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class ImageBuilder {
 
-    public String build(String filePath, String imageName) throws Exception {
+    public String build(String filePath, String imageName, String imageTag, String additionalArgs) throws Exception {
         final DockerClient docker = DefaultDockerClient.fromEnv().
                 build();
 
