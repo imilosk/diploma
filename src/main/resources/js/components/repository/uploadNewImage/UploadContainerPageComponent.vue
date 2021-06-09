@@ -25,7 +25,8 @@
                            v-model="imageName"
                     />
                   </div>
-                  <label class="block text-sm font-medium text-gray-700" for="image_tag_id">
+                  <label class="block text-sm font-medium text-gray-700"
+                         for="image_tag_id">
                     Image tag
                   </label>
                   <input
@@ -36,7 +37,8 @@
                       type="text"
                       v-model="imageTag"
                   />
-                  <label class="block text-sm font-medium text-gray-700" for="additional_args_id">
+                  <label class="block text-sm font-medium text-gray-700"
+                         for="additional_args_id">
                     Additional arguments
                   </label>
                   <input
@@ -54,17 +56,17 @@
                   >
                     Submit
                   </button>
-<!--                  <button-->
-<!--                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"-->
-<!--                      disabled-->
-<!--                      type="submit"-->
-<!--                  >-->
-<!--                    <svg-->
-<!--                        class="animate-spin h-4 w-4 rounded-full bg-transparent border-2 border-transparent border-opacity-50 mr-2"-->
-<!--                        style="border-right-color: white; border-top-color: white;"-->
-<!--                        viewBox="0 0 24 24"></svg>-->
-<!--                    Loading-->
-<!--                  </button>-->
+                  <!--                  <button-->
+                  <!--                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"-->
+                  <!--                      disabled-->
+                  <!--                      type="submit"-->
+                  <!--                  >-->
+                  <!--                    <svg-->
+                  <!--                        class="animate-spin h-4 w-4 rounded-full bg-transparent border-2 border-transparent border-opacity-50 mr-2"-->
+                  <!--                        style="border-right-color: white; border-top-color: white;"-->
+                  <!--                        viewBox="0 0 24 24"></svg>-->
+                  <!--                    Loading-->
+                  <!--                  </button>-->
                 </div>
               </div>
             </div>
@@ -109,9 +111,32 @@ export default {
       bodyFormData.append('imageName', this.imageName);
       bodyFormData.append('imageTag', this.imageTag);
       bodyFormData.append('additionalArgs', this.additionalArgs);
-      bodyFormData.append('file', this.$refs.fileUploadComponent.filelist[0] ?? '');
+      if (this.$refs.fileUploadComponent.filelist[0]) {
+        bodyFormData.append('file', this.$refs.fileUploadComponent.filelist[0]);
+      }
+
+      let that = this;
       axios.post('/app/uploadImage', bodyFormData).then(function (response) {
-        console.log(response);
+        that.$toastr('add', {
+          title: 'Message',
+          msg: 'Your image was built successfully',
+          timeout: 10000,
+          type: 'success',
+          position: 'toast-top-right',
+          closeOnHover: false,
+          clickClose: true
+        });
+      }).catch(function (error) {
+        console.log(error.response.data.errors[0].defaultMessage);
+        that.$toastr('add', {
+          title: 'Message',
+          msg: error.response.data.errors[0].defaultMessage,
+          timeout: 10000,
+          type: 'error',
+          position: 'toast-top-right',
+          closeOnHover: false,
+          clickClose: true
+        });
       });
     }
   }

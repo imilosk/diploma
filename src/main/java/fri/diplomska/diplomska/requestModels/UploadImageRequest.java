@@ -16,8 +16,8 @@ public class UploadImageRequest {
     @Optional
     private String additionalArgs;
 
-    @NotNull(message = "File must be attached")
-    private MultipartFile file;
+    @NotNull(message = "File must be provided")
+    private MultipartFile file = null;
 
     public String getAdditionalArgs() {
         return additionalArgs;

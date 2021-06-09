@@ -6,9 +6,14 @@ import fri.diplomska.diplomska.requestModels.UploadImageRequest;
 import net.lingala.zip4j.ZipFile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.io.FileUtils;
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
