@@ -2,13 +2,15 @@ package fri.diplomska.diplomska.controllers;
 
 import fri.diplomska.diplomska.docker.ImageBuilder;
 import fri.diplomska.diplomska.helpers.Helper;
-import fri.diplomska.diplomska.kubernetes.Deployer;
+import fri.diplomska.diplomska.requestModels.UploadImageRequest;
 import net.lingala.zip4j.ZipFile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.apache.commons.io.FileUtils;
+import javax.validation.Valid;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,11 +21,13 @@ public class FileUploadController {
 
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/uploadImage", method = RequestMethod.POST)
-    public ResponseEntity<String> index(@RequestParam("imageName") String imageName,
-                                        @RequestParam("imageTag") String imageTag,
-                                        @RequestParam("additionalArgs") String additionalArgs,
-                                        @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> index(@Valid UploadImageRequest request) {
         try {
+
+            String imageName = request.getImageName();
+            String imageTag = request.getImageTag();
+            String additionalArgs = request.getAdditionalArgs();
+            MultipartFile file = request.getFile();
 
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
@@ -44,6 +48,9 @@ public class FileUploadController {
 
             ImageBuilder imageBuilder = new ImageBuilder();
             String imageId = imageBuilder.build(fileFolder, imageName, imageTag, additionalArgs);
+
+            FileUtils.deleteDirectory(new File(fileFolder));
+
             System.out.println(imageId);
 
         } catch (Exception e) {
