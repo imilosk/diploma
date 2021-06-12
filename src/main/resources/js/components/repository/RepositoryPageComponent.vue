@@ -73,6 +73,9 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm text-gray-900">{{ dockerImage.size }}</div>
                 </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <a class="text-red-600 hover:text-red-900" href="#">DELETE</a>
+                </td>
               </tr>
               </tbody>
             </table>
