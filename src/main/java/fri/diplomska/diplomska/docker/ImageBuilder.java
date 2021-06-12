@@ -15,6 +15,8 @@ public class ImageBuilder {
         final DockerClient docker = DefaultDockerClient.fromEnv().
                 build();
 
+        imageName = imageName + ":" + imageTag;
+
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
                 Paths.get(filePath), imageName, new ProgressHandler() {
