@@ -42,15 +42,15 @@
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     scope="col">
-                  Title
+                  Tag
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     scope="col">
-                  Status
+                  Image id
                 </th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     scope="col">
-                  Role
+                  Size
                 </th>
                 <th class="relative px-6 py-3"
                     scope="col">
@@ -59,40 +59,19 @@
               </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="person in filteredList"
-                  :key="person.email">
+              <tr v-for="dockerImage in filteredList"
+                  :key="dockerImage.imageId">
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img :src="person.image"
-                           alt=""
-                           class="h-10 w-10 rounded-full"/>
-                    </div>
-                    <div class="ml-4">
-                      <div class="text-sm font-medium text-gray-900">
-                        {{ person.name }}
-                      </div>
-                      <div class="text-sm text-gray-500">
-                        {{ person.email }}
-                      </div>
-                    </div>
-                  </div>
+                  <div class="text-sm text-gray-900">{{ dockerImage.name }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ person.title }}</div>
-                  <div class="text-sm text-gray-500">{{ person.department }}</div>
+                  <div class="text-sm text-gray-900">{{ dockerImage.tag }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
+                  <div class="text-sm text-gray-900">{{ dockerImage.imageId }}</div>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {{ person.role }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a class="text-indigo-600 hover:text-indigo-900"
-                     href="#">Edit</a>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ dockerImage.size }}</div>
                 </td>
               </tr>
               </tbody>
@@ -107,59 +86,12 @@
 <script>
 import DropdownMenu from "./DropdownMenuComponent";
 import DropdownMenuComponent from "./DropdownMenuComponent";
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  {
-    name: 'Boki Dandalo',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  {
-    name: 'Simo Cortilo',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  {
-    name: 'Milos Cvabalo',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-  {
-    name: 'Dimitar Becki kocijas',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-]
 
 export default {
   components: {DropdownMenuComponent, DropdownMenu},
   data() {
     return {
-      people,
+      people: [],
       inputText: ''
     }
   },
@@ -172,6 +104,13 @@ export default {
         return human.name.toLowerCase().includes(this.inputText.toLowerCase())
       });
     }
+  },
+  mounted() {
+    let that = this;
+    axios.get('/app/listImages').then(function (response) {
+      console.log(response);
+      that.people = response.data;
+    });
   }
 }
 </script>

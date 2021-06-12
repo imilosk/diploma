@@ -1,9 +1,15 @@
 package fri.diplomska.diplomska.controllers;
 
+import com.spotify.docker.client.DefaultDockerClient;
+import com.spotify.docker.client.DockerClient;
+import com.spotify.docker.client.messages.ImageInfo;
 import fri.diplomska.diplomska.docker.ImageBuilder;
 import fri.diplomska.diplomska.helpers.Helper;
+import fri.diplomska.diplomska.repository.ImageRepository;
+import fri.diplomska.diplomska.requestModels.DockerImage;
 import fri.diplomska.diplomska.requestModels.UploadImageRequest;
 import net.lingala.zip4j.ZipFile;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -24,6 +30,9 @@ import java.util.UUID;
 @RestController
 public class FileUploadController {
 
+    @Autowired
+    private ImageRepository imageRepository;
+
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/uploadImage", method = RequestMethod.POST)
     public ResponseEntity<String> index(@Valid UploadImageRequest request) {
@@ -33,6 +42,9 @@ public class FileUploadController {
             String imageTag = request.getImageTag();
             String additionalArgs = request.getAdditionalArgs();
             MultipartFile file = request.getFile();
+
+            final DockerClient docker = DefaultDockerClient.fromEnv().
+                    build();
 
             // create a random UUID for folder name
             String folderName = UUID.randomUUID().toString();
@@ -54,7 +66,16 @@ public class FileUploadController {
             ImageBuilder imageBuilder = new ImageBuilder();
             String imageId = imageBuilder.build(fileFolder, imageName, imageTag, additionalArgs);
 
+            ImageInfo imageInfo = docker.inspectImage(imageId);
+
             FileUtils.deleteDirectory(new File(fileFolder));
+
+            DockerImage dockerImage = new DockerImage();
+            dockerImage.setName(imageName);
+            dockerImage.setSize(imageInfo.size());
+            dockerImage.setImageId(imageId);
+            dockerImage.setTag(imageTag);
+            imageRepository.save(dockerImage);
 
             System.out.println(imageId);
 
