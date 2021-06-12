@@ -111,7 +111,6 @@ export default {
   mounted() {
     let that = this;
     axios.get('/app/listImages').then(function (response) {
-      console.log(response);
       that.people = response.data;
     });
   }
