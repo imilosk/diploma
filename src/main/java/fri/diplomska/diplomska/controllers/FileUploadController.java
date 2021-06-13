@@ -70,13 +70,20 @@ public class FileUploadController {
 
             FileUtils.deleteDirectory(new File(fileFolder));
 
-            DockerImage dockerImage = new DockerImage();
-            dockerImage.setName(imageName);
-            dockerImage.setSize(imageInfo.size());
-            dockerImage.setImageId(imageId);
-            dockerImage.setTag(imageTag);
-            imageRepository.save(dockerImage);
+            DockerImage existingDockerImage = imageRepository.findByImageId(imageId);
 
+            if (existingDockerImage == null) {
+                DockerImage dockerImage = new DockerImage();
+                dockerImage.setName(imageName);
+                dockerImage.setSize(imageInfo.size());
+                dockerImage.setImageId(imageId);
+                dockerImage.setTag(imageTag);
+                imageRepository.save(dockerImage);
+            } else {
+                existingDockerImage.setTag(imageTag);
+                existingDockerImage.setName(imageName);
+                imageRepository.save(existingDockerImage);
+            }
 
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);

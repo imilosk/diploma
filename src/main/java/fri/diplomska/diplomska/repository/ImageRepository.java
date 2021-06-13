@@ -5,5 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ImageRepository extends CrudRepository<DockerImage, Integer> {
 
+    public DockerImage findByImageId(String imageId);
+
 }
 
