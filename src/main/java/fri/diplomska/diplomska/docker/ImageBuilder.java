@@ -32,6 +32,8 @@ public class ImageBuilder {
 
         imageName = imageName + ":" + imageTag;
 
+        DockerClient.BuildParam param = DockerClient.BuildParam.create("target", "dev-env");
+
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
         final String returnedImageId = docker.build(
                 Paths.get(filePath), imageName, new ProgressHandler() {
@@ -56,7 +58,7 @@ public class ImageBuilder {
                             chatModule.getNamespace().getBroadcastOperations().sendEvent("chat", responseMessage);
                         }
                     }
-                });
+                }, param);
         return returnedImageId;
     }
 
