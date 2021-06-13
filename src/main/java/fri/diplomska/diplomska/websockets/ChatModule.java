@@ -24,10 +24,10 @@ public class ChatModule {
         this.namespace = server.addNamespace("/chat");
         this.namespace.addConnectListener(onConnected());
         this.namespace.addDisconnectListener(onDisconnected());
-        this.namespace.addEventListener("chat", ChatMessage.class, onChatReceived());
+        this.namespace.addEventListener("chat", ResponseMessage.class, onChatReceived());
     }
 
-    private DataListener<ChatMessage> onChatReceived() {
+    private DataListener<ResponseMessage> onChatReceived() {
         return (client, data, ackSender) -> {
             System.out.println("Chat received");
             log.debug("Client[{}] - Received chat message '{}'", client.getSessionId().toString(), data);

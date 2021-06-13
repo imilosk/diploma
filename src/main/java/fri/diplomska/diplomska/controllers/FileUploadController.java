@@ -1,7 +1,5 @@
 package fri.diplomska.diplomska.controllers;
 
-import com.corundumstudio.socketio.SocketIONamespace;
-import com.corundumstudio.socketio.SocketIOServer;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.messages.ImageInfo;
@@ -10,20 +8,15 @@ import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.repository.ImageRepository;
 import fri.diplomska.diplomska.requestModels.DockerImage;
 import fri.diplomska.diplomska.requestModels.UploadImageRequest;
-import fri.diplomska.diplomska.websockets.ChatMessage;
 import fri.diplomska.diplomska.websockets.ChatModule;
 import net.lingala.zip4j.ZipFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.io.FileUtils;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;

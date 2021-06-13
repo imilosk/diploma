@@ -9,10 +9,13 @@ import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.ProgressHandler;
 import com.spotify.docker.client.exceptions.DockerException;
+import com.spotify.docker.client.messages.ProgressDetail;
 import com.spotify.docker.client.messages.ProgressMessage;
 import fri.diplomska.diplomska.websockets.ChatModule;
+import fri.diplomska.diplomska.websockets.ResponseMessage;
 
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ImageBuilder {
@@ -39,12 +42,18 @@ public class ImageBuilder {
                             imageIdFromMessage.set(imageId);
                         }
 
-                        chatModule.getNamespace().getBroadcastOperations().sendEvent("chat",
-                                "test");
+                        ProgressDetail progressDetail = progressMessage.progressDetail();
+                        String progress = progressMessage.progress();
+                        String status = progressMessage.status();
+                        String stream = progressMessage.stream();
 
-                        if (progressMessage.status() != null && !progressMessage.status().isEmpty()) {
-                            chatModule.getNamespace().getBroadcastOperations().sendEvent("chat",
-                                    progressMessage.status());
+                        if (status != null || progress != null || stream != null) {
+                            String outputMessage = Objects.toString(stream);
+                            ResponseMessage responseMessage = new ResponseMessage();
+                            responseMessage.setMessage(outputMessage);
+                            responseMessage.setProgress(progress);
+
+                            chatModule.getNamespace().getBroadcastOperations().sendEvent("chat", responseMessage);
                         }
                     }
                 });

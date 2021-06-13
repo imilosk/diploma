@@ -1,26 +1,26 @@
 package fri.diplomska.diplomska.websockets;
 
 
-public class ChatMessage {
+public class ResponseMessage {
 
-    private String userName;
+    private String progress;
     private String message;
 
-    public ChatMessage() {
+    public ResponseMessage() {
     }
 
-    public ChatMessage(String userName, String message) {
+    public ResponseMessage(String userName, String message) {
         super();
-        this.userName = userName;
+        this.progress = userName;
         this.message = message;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getProgress() {
+        return progress;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setProgress(String progress) {
+        this.progress = progress;
     }
 
     public String getMessage() {
@@ -34,7 +34,7 @@ public class ChatMessage {
     @Override
     public String toString() {
         return "ChatMessage{" +
-                "userName='" + userName + '\'' +
+                "userName='" + progress + '\'' +
                 ", message='" + message + '\'' +
                 '}';
     }

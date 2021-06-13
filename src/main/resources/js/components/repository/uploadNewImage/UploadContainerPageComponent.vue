@@ -83,9 +83,10 @@
               <file-upload-component ref="fileUploadComponent"/>
             </div>
           </div>
-
         </form>
       </div>
+
+      <terminal-component ref="terminal" @hook:mounted="setTerminalMounted"/>
 
     </div>
   </div>
@@ -105,6 +106,7 @@ export default {
       imageName: '',
       imageTag: '',
       additionalArgs: '',
+      isTerminalMounted: false,
     }
   },
   methods: {
@@ -121,6 +123,7 @@ export default {
 
       let that = this;
       axios.post('/app/uploadImage', bodyFormData).then(function (response) {
+        that.$refs.terminal.progress = '';
         that.$toastr('add', {
           title: 'Message',
           msg: 'Your image was built successfully',
@@ -143,17 +146,33 @@ export default {
         });
       });
     },
+    setTerminalMounted() {
+      this.isTerminalMounted = true;
+    }
   },
 
-  created() {
+  mounted() {
     console.log('mounted');
+
+    let that = this;
 
     socket.on('connect', function () {
       console.log('connected');
     });
 
     socket.on('chat', function (data) {
-      console.log(data);
+      const arrayLength = that.$refs.terminal.lines.length;
+      let lastItem = that.$refs.terminal.lines[arrayLength - 1];
+      if (data.message != lastItem && data.message != null){
+        that.$refs.terminal.lines.push(data.message);
+        let container = that.$el.querySelector(".fakeScreen");
+        container.scrollTop = container.scrollHeight;
+      }
+
+      if (data.progress != null) {
+        that.$refs.terminal.progress = data.progress;
+      }
+
     });
 
   }
