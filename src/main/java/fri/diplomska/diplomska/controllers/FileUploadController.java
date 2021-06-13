@@ -1,5 +1,7 @@
 package fri.diplomska.diplomska.controllers;
 
+import com.corundumstudio.socketio.SocketIONamespace;
+import com.corundumstudio.socketio.SocketIOServer;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.messages.ImageInfo;
@@ -8,6 +10,8 @@ import fri.diplomska.diplomska.helpers.Helper;
 import fri.diplomska.diplomska.repository.ImageRepository;
 import fri.diplomska.diplomska.requestModels.DockerImage;
 import fri.diplomska.diplomska.requestModels.UploadImageRequest;
+import fri.diplomska.diplomska.websockets.ChatMessage;
+import fri.diplomska.diplomska.websockets.ChatModule;
 import net.lingala.zip4j.ZipFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +36,9 @@ public class FileUploadController {
 
     @Autowired
     private ImageRepository imageRepository;
+
+    @Autowired
+    private ChatModule chatModule;
 
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/uploadImage", method = RequestMethod.POST)
@@ -63,7 +70,7 @@ public class FileUploadController {
             // unzip the files
             new ZipFile(filePathToSave.toString()).extractAll(fileFolder);
 
-            ImageBuilder imageBuilder = new ImageBuilder();
+            ImageBuilder imageBuilder = new ImageBuilder(chatModule);
             String imageId = imageBuilder.build(fileFolder, imageName, imageTag, additionalArgs);
 
             ImageInfo imageInfo = docker.inspectImage(imageId);
@@ -77,7 +84,6 @@ public class FileUploadController {
             dockerImage.setTag(imageTag);
             imageRepository.save(dockerImage);
 
-            System.out.println(imageId);
 
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);

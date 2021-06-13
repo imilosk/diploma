@@ -93,9 +93,13 @@
 
 <script>
 import NavBarComponent from "../../dashboard/NavBarComponent";
+import io from "socket.io-client";
+let socket = io.connect('http://localhost:9092/chat')
 
 export default {
-  components: {NavBarComponent},
+  components: {
+    NavBarComponent,
+  },
   data() {
     return {
       imageName: '',
@@ -138,7 +142,21 @@ export default {
           clickClose: true
         });
       });
-    }
+    },
+  },
+
+  created() {
+    console.log('mounted');
+
+    socket.on('connect', function () {
+      console.log('connected');
+    });
+
+    socket.on('chat', function (data) {
+      console.log(data);
+    });
+
   }
+
 }
 </script>
