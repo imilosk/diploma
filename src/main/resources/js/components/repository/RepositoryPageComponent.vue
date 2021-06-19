@@ -110,7 +110,7 @@ export default {
   },
   mounted() {
     let that = this;
-    axios.get('/app/listImages').then(function (response) {
+    axios.get('/app/images').then(function (response) {
       that.people = response.data;
     });
   }

@@ -121,7 +121,7 @@ export default {
       }
 
       let that = this;
-      axios.post('/app/uploadImage', bodyFormData).then(function (response) {
+      axios.post('/app/images', bodyFormData).then(function (response) {
         that.$refs.terminal.progress = '';
         that.$toastr('add', {
           title: 'Message',
