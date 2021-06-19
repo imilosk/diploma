@@ -17,11 +17,9 @@ import javax.validation.Valid;
 public class DockerImagesController {
 
     private final DockerService dockerService;
-    private final FileHelpers fileHelpers;
 
-    public DockerImagesController(DockerService dockerService, FileHelpers fileHelpers) {
+    public DockerImagesController(DockerService dockerService) {
         this.dockerService = dockerService;
-        this.fileHelpers = fileHelpers;
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.GET)
@@ -37,13 +35,7 @@ public class DockerImagesController {
             String additionalArgs = request.getAdditionalArgs();
             MultipartFile file = request.getFile();
 
-            String dockerfileDirectory = this.fileHelpers.createTempDirectory();
-            this.fileHelpers.unzipFile(file, dockerfileDirectory);
-
-            dockerService.buildImage(dockerfileDirectory, imageName, imageTag, additionalArgs);
-
-            this.fileHelpers.deleteDirectory(dockerfileDirectory);
-
+            dockerService.buildImage(file, imageName, imageTag, additionalArgs);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
