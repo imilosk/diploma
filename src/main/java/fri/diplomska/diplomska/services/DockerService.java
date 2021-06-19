@@ -5,12 +5,10 @@ import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
-import com.spotify.docker.client.messages.ImageInfo;
 import fri.diplomska.diplomska.helpers.DockerHelpers;
 import fri.diplomska.diplomska.models.DockerImage;
-import fri.diplomska.diplomska.repositories.DockerImageRepository;
+import fri.diplomska.diplomska.repositories.DockerImageRepositoryImpl;
 import fri.diplomska.diplomska.websockets.ImageBuildProgressModule;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -20,16 +18,15 @@ import java.util.concurrent.atomic.AtomicReference;
 @Component
 public class DockerService {
 
+    private final DockerImageRepositoryImpl dockerImageRepositoryImpl;
     private final SocketIONamespace socketIONamespace;
-    private final DockerImageRepository imageRepository;
     private final DockerHelpers dockerHelpers;
-
     private final DockerClient dockerClient;
 
-    @Autowired
-    public DockerService(ImageBuildProgressModule imageBuildProgressModule, DockerImageRepository imageRepository, DockerHelpers dockerHelpers) throws DockerCertificateException {
+    public DockerService(DockerImageRepositoryImpl dockerImageRepositoryImpl,
+                         ImageBuildProgressModule imageBuildProgressModule, DockerHelpers dockerHelpers) throws DockerCertificateException {
+        this.dockerImageRepositoryImpl = dockerImageRepositoryImpl;
         this.socketIONamespace = imageBuildProgressModule.getNamespace();
-        this.imageRepository = imageRepository;
         this.dockerHelpers = dockerHelpers;
         this.dockerClient = DefaultDockerClient.fromEnv().build();
     }
@@ -50,27 +47,12 @@ public class DockerService {
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
 
         final String returnedImageId = this.dockerClient.build(
-            Paths.get(filePath), imageName, progressMessage -> dockerHelpers.sendBuildProgress(progressMessage,
+            Paths.get(filePath), imageName, progressMessage -> this.dockerHelpers.sendBuildProgress(progressMessage,
                         imageIdFromMessage, this.socketIONamespace, "imageProgress"));
 
-        ImageInfo imageInfo = this.dockerClient.inspectImage(returnedImageId);
-        DockerImage existingDockerImage = this.imageRepository.findByImageId(returnedImageId);
-
-        if (existingDockerImage == null) {
-            DockerImage dockerImage = new DockerImage();
-            dockerImage.setName(imageName);
-            dockerImage.setSize(imageInfo.size());
-            dockerImage.setImageId(returnedImageId);
-            dockerImage.setTag(imageTag);
-            this.imageRepository.save(dockerImage);
-        } else {
-            existingDockerImage.setTag(imageTag);
-            existingDockerImage.setName(imageName);
-            this.imageRepository.save(existingDockerImage);
-        }
-
+        long imageSize = this.dockerClient.inspectImage(returnedImageId).size();
+        this.dockerImageRepositoryImpl.saveImageToDB(imageName, imageTag, imageSize, returnedImageId);
     }
-
 
     /**
      * Returns a list of all Docker images in the DB
@@ -78,7 +60,7 @@ public class DockerService {
      * @return List of docker images
      */
     public Iterable<DockerImage> getAllImages() {
-        return imageRepository.findAll();
+        return this.dockerImageRepositoryImpl.getAllImages();
     }
 
 }
