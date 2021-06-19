@@ -1,6 +1,5 @@
 package fri.diplomska.diplomska.controllers;
 
-import fri.diplomska.diplomska.helpers.FileHelpers;
 import fri.diplomska.diplomska.models.DockerImage;
 import fri.diplomska.diplomska.models.data.DockerImageDataModel;
 import fri.diplomska.diplomska.services.DockerService;
