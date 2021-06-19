@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeploymentsController {
 
     private final KubernetesService kubernetesService;
-
-    @Autowired
+    
     public DeploymentsController(KubernetesService kubernetesService) {
         this.kubernetesService = kubernetesService;
     }
