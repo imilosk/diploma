@@ -2,6 +2,7 @@ package fri.diplomska.diplomska.helpers;
 
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -10,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+@Component
 public class FileHelpers {
 
     /**
@@ -18,7 +20,7 @@ public class FileHelpers {
      * @return String
      * @throws IOException Throws an IOException
      */
-    public static String createTempDirectory() throws IOException {
+    public String createTempDirectory() throws IOException {
         Path tmpDirNoPrefix = Files.createTempDirectory(null);
         return tmpDirNoPrefix.toAbsolutePath().toString();
     }
@@ -29,7 +31,7 @@ public class FileHelpers {
      * @param directoryPath Absolute path to the directory
      * @throws IOException Throws an IOException
      */
-    public static void deleteDirectory(String directoryPath) throws IOException {
+    public void deleteDirectory(String directoryPath) throws IOException {
         FileUtils.deleteDirectory(new File(directoryPath));
     }
 
@@ -40,7 +42,7 @@ public class FileHelpers {
      * @param unzipPath Where to unzip the file
      * @throws IOException Throws an IOException
      */
-    public static void unzipFile(MultipartFile file, String unzipPath) throws IOException {
+    public void unzipFile(MultipartFile file, String unzipPath) throws IOException {
         Path filePathToSave = Paths.get(unzipPath, "archive.zip");
 
         // first save zip file to disk
