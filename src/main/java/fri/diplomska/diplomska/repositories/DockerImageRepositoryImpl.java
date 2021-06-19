@@ -19,7 +19,7 @@ public class DockerImageRepositoryImpl {
      * @param imageTag The image tag
      * @param imageId The image id
      */
-    public void saveImageToDB(String imageName, String imageTag, long imageSize, String imageId) {
+    public void upsert(String imageName, String imageTag, long imageSize, String imageId) {
         DockerImage existingDockerImage = this.dockerImageRepository.findByImageId(imageId);
 
         if (existingDockerImage == null) {
@@ -41,7 +41,7 @@ public class DockerImageRepositoryImpl {
      *
      * @return List of docker images
      */
-    public Iterable<DockerImage> getAllImages() {
+    public Iterable<DockerImage> getAll() {
         return this.dockerImageRepository.findAll();
     }
 

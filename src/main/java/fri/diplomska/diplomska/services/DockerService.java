@@ -51,7 +51,7 @@ public class DockerService {
                         imageIdFromMessage, this.socketIONamespace, "imageProgress"));
 
         long imageSize = this.dockerClient.inspectImage(returnedImageId).size();
-        this.dockerImageRepositoryImpl.saveImageToDB(imageName, imageTag, imageSize, returnedImageId);
+        this.dockerImageRepositoryImpl.upsert(imageName, imageTag, imageSize, returnedImageId);
     }
 
     /**
@@ -60,7 +60,7 @@ public class DockerService {
      * @return List of docker images
      */
     public Iterable<DockerImage> getAllImages() {
-        return this.dockerImageRepositoryImpl.getAllImages();
+        return this.dockerImageRepositoryImpl.getAll();
     }
 
 }
