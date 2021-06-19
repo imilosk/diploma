@@ -2,6 +2,7 @@ package fri.diplomska.diplomska.models.data;
 
 import org.jvnet.hk2.annotations.Optional;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
