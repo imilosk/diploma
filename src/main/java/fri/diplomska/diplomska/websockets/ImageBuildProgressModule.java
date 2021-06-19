@@ -9,7 +9,6 @@ import com.corundumstudio.socketio.listener.DisconnectListener;
 import fri.diplomska.diplomska.models.data.ImageBuildProgressDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,7 +18,6 @@ public class ImageBuildProgressModule {
 
     private final SocketIONamespace namespace;
 
-    @Autowired
     public ImageBuildProgressModule(SocketIOServer server) {
         this.namespace = server.addNamespace("/imageProgress");
         this.namespace.addConnectListener(onConnected());
@@ -31,7 +29,7 @@ public class ImageBuildProgressModule {
         return (client, data, ackSender) -> {
             System.out.println("Message received");
             log.debug("Client[{}] - Received message '{}'", client.getSessionId().toString(), data);
-            namespace.getBroadcastOperations().sendEvent("imageProgress", data);
+            this.namespace.getBroadcastOperations().sendEvent("imageProgress", data);
         };
     }
 
@@ -49,7 +47,7 @@ public class ImageBuildProgressModule {
     }
 
     public SocketIONamespace getNamespace() {
-        return namespace;
+        return this.namespace;
     }
 
 }
