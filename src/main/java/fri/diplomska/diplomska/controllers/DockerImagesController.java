@@ -6,7 +6,10 @@ import fri.diplomska.diplomska.models.data.DockerImageDataModel;
 import fri.diplomska.diplomska.services.DockerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -15,18 +18,18 @@ import javax.validation.Valid;
 public class DockerImagesController {
 
     private final DockerService dockerService;
+    private final FileHelpers fileHelpers;
 
-    public DockerImagesController(DockerService dockerService) {
+    public DockerImagesController(DockerService dockerService, FileHelpers fileHelpers) {
         this.dockerService = dockerService;
+        this.fileHelpers = fileHelpers;
     }
 
-    @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/images", method = RequestMethod.GET)
     public @ResponseBody Iterable<DockerImage> index() {
-        return dockerService.getAllImages();
+        return this.dockerService.getAllImages();
     }
 
-    @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/images", method = RequestMethod.POST)
     public ResponseEntity<String> index(@Valid DockerImageDataModel request) {
         try {
@@ -35,12 +38,12 @@ public class DockerImagesController {
             String additionalArgs = request.getAdditionalArgs();
             MultipartFile file = request.getFile();
 
-            String dockerfileDirectory = FileHelpers.createTempDirectory();
-            FileHelpers.unzipFile(file, dockerfileDirectory);
+            String dockerfileDirectory = this.fileHelpers.createTempDirectory();
+            this.fileHelpers.unzipFile(file, dockerfileDirectory);
 
             dockerService.buildImage(dockerfileDirectory, imageName, imageTag, additionalArgs);
 
-            FileHelpers.deleteDirectory(dockerfileDirectory);
+            this.fileHelpers.deleteDirectory(dockerfileDirectory);
 
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
