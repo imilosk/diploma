@@ -13,6 +13,8 @@ public class DockerImageRepositoryImpl {
     }
 
     /**
+     * Upsert docker image in DB
+     *
      * @param imageName The image name
      * @param imageTag The image tag
      * @param imageId The image id
