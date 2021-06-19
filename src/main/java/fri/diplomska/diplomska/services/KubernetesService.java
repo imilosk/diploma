@@ -1,10 +1,5 @@
-package fri.diplomska.diplomska.kubernetes;
+package fri.diplomska.diplomska.services;
 
-import com.spotify.docker.client.DefaultDockerClient;
-import com.spotify.docker.client.DockerClient;
-import com.spotify.docker.client.exceptions.DockerCertificateException;
-import com.spotify.docker.client.exceptions.DockerException;
-import com.spotify.docker.client.messages.ImageInfo;
 import io.fabric8.kubernetes.api.model.IntOrString;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.ServiceAccount;
@@ -13,10 +8,18 @@ import io.fabric8.kubernetes.api.model.apps.Deployment;
 import io.fabric8.kubernetes.api.model.apps.DeploymentBuilder;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public class Deployer {
+@Configuration
+public class KubernetesService {
 
-    public void deploy(String imageName, String deploymentName, int containerPort, int servicePort) throws DockerCertificateException, DockerException, InterruptedException {
+    @Bean
+    public KubernetesService KubernetesService() {
+        return new KubernetesService();
+    }
+
+    public void deployService(String imageName, String deploymentName, int containerPort, int servicePort) {
         KubernetesClient client = new DefaultKubernetesClient();
 
         String namespace = "default";
@@ -33,30 +36,30 @@ public class Deployer {
         client.serviceAccounts().inNamespace("default").createOrReplace(fabric8);
 
         Deployment deployment = new DeploymentBuilder()
-            .withNewMetadata()
+                .withNewMetadata()
                 .withName(deploymentName)
-            .endMetadata()
-            .withNewSpec()
+                .endMetadata()
+                .withNewSpec()
                 .withReplicas(1)
-                    .withNewTemplate()
-                        .withNewMetadata()
-                            .addToLabels("app", deploymentName)
-                        .endMetadata()
-                        .withNewSpec()
-                            .addNewContainer()
-                                .withName(deploymentName)
-                                .withImage(imageName)
-                                    .addNewPort()
-                                        .withContainerPort(containerPort)
-                                    .endPort()
-                            .endContainer()
-                        .endSpec()
-                    .endTemplate()
+                .withNewTemplate()
+                .withNewMetadata()
+                .addToLabels("app", deploymentName)
+                .endMetadata()
+                .withNewSpec()
+                .addNewContainer()
+                .withName(deploymentName)
+                .withImage(imageName)
+                .addNewPort()
+                .withContainerPort(containerPort)
+                .endPort()
+                .endContainer()
+                .endSpec()
+                .endTemplate()
                 .withNewSelector()
-                    .addToMatchLabels("app", deploymentName)
+                .addToMatchLabels("app", deploymentName)
                 .endSelector()
-            .endSpec()
-        .build();
+                .endSpec()
+                .build();
 
         deployment = client.apps().deployments().inNamespace(namespace).createOrReplace(deployment);
         System.out.println("Created deployment: " + deployment);
@@ -65,29 +68,28 @@ public class Deployer {
     private void createK8sService(KubernetesClient client, String serviceName, String deploymentName,
                                   String externalName, int containerPort, int servicePort, String namespace) {
         Service createdSvc = client.services().inNamespace(namespace).createOrReplaceWithNew()
-            .withNewMetadata()
+                .withNewMetadata()
                 .withName(serviceName)
-            .endMetadata()
-            .withNewSpec()
+                .endMetadata()
+                .withNewSpec()
                 .withType("LoadBalancer")
                 .withExternalName(externalName)
                 .addNewPort()
-                    .withName(Integer.toString(servicePort))
-                    .withProtocol("TCP")
-                    .withPort(servicePort)
-                    .withTargetPort(new IntOrString(containerPort))
+                .withName(Integer.toString(servicePort))
+                .withProtocol("TCP")
+                .withPort(servicePort)
+                .withTargetPort(new IntOrString(containerPort))
                 .endPort()
                 .addToSelector("app", deploymentName)
-            .endSpec()
-            .withNewStatus()
+                .endSpec()
+                .withNewStatus()
                 .withNewLoadBalancer()
-                    .addNewIngress()
-                    .endIngress()
+                .addNewIngress()
+                .endIngress()
                 .endLoadBalancer()
-            .endStatus()
-        .done();
+                .endStatus()
+                .done();
 
         System.out.println("Created service:" + createdSvc);
     }
-
 }

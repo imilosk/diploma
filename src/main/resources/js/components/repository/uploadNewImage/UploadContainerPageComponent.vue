@@ -94,7 +94,7 @@
 <script>
 import NavBarComponent from "../../NavBarComponent";
 import io from "socket.io-client";
-let socket = io.connect('http://localhost:9092/chat')
+let socket = io.connect('http://localhost:9092/imageProgress')
 
 export default {
   components: {
@@ -159,7 +159,7 @@ export default {
       console.log('connected');
     });
 
-    socket.on('chat', function (data) {
+    socket.on('imageProgress', function (data) {
       const arrayLength = that.$refs.terminal.lines.length;
       let lastItem = that.$refs.terminal.lines[arrayLength - 1];
       if (data.message != lastItem && data.message != null){
@@ -173,7 +173,6 @@ export default {
       }
 
     });
-
   }
 
 }

@@ -1,11 +1,11 @@
-package fri.diplomska.diplomska.requestModels;
+package fri.diplomska.diplomska.models.data;
 
 import org.jvnet.hk2.annotations.Optional;
 import org.springframework.web.multipart.MultipartFile;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class UploadImageRequest {
+public class DockerImageDataModel {
 
     @NotBlank(message = "Image name is mandatory")
     private String imageName;

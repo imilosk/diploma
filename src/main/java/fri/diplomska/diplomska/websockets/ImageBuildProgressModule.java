@@ -1,50 +1,50 @@
 package fri.diplomska.diplomska.websockets;
 
-
 import com.corundumstudio.socketio.HandshakeData;
 import com.corundumstudio.socketio.SocketIONamespace;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
+import fri.diplomska.diplomska.models.data.ImageBuildProgressDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ChatModule {
+public class ImageBuildProgressModule {
 
-    private static final Logger log = LoggerFactory.getLogger(ChatModule.class);
+    private static final Logger log = LoggerFactory.getLogger(ImageBuildProgressModule.class);
 
     private final SocketIONamespace namespace;
 
     @Autowired
-    public ChatModule(SocketIOServer server) {
-        this.namespace = server.addNamespace("/chat");
+    public ImageBuildProgressModule(SocketIOServer server) {
+        this.namespace = server.addNamespace("/imageProgress");
         this.namespace.addConnectListener(onConnected());
         this.namespace.addDisconnectListener(onDisconnected());
-        this.namespace.addEventListener("chat", ResponseMessage.class, onChatReceived());
+        this.namespace.addEventListener("imageProgress", ImageBuildProgressDataModel.class, onMessageReceived());
     }
 
-    private DataListener<ResponseMessage> onChatReceived() {
+    private DataListener<ImageBuildProgressDataModel> onMessageReceived() {
         return (client, data, ackSender) -> {
-            System.out.println("Chat received");
-            log.debug("Client[{}] - Received chat message '{}'", client.getSessionId().toString(), data);
-            namespace.getBroadcastOperations().sendEvent("chat", data);
+            System.out.println("Message received");
+            log.debug("Client[{}] - Received message '{}'", client.getSessionId().toString(), data);
+            namespace.getBroadcastOperations().sendEvent("imageProgress", data);
         };
     }
 
     private ConnectListener onConnected() {
         return client -> {
             HandshakeData handshakeData = client.getHandshakeData();
-            log.debug("Client[{}] - Connected to chat module through '{}'", client.getSessionId().toString(), handshakeData.getUrl());
+            log.debug("Client[{}] - Connected to imageProgress module through '{}'", client.getSessionId().toString(), handshakeData.getUrl());
         };
     }
 
     private DisconnectListener onDisconnected() {
         return client -> {
-            log.debug("Client[{}] - Disconnected from chat module.", client.getSessionId().toString());
+            log.debug("Client[{}] - Disconnected from imageProgress module.", client.getSessionId().toString());
         };
     }
 

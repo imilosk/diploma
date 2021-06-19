@@ -1,6 +1,7 @@
 package fri.diplomska.diplomska.controllers;
 
-import fri.diplomska.diplomska.kubernetes.Deployer;
+import fri.diplomska.diplomska.services.KubernetesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,6 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DeploymentsController {
 
+    private KubernetesService kubernetesService;
+
+    @Autowired
+    public DeploymentsController(KubernetesService kubernetesService) {
+        this.kubernetesService = kubernetesService;
+    }
+
     @ExceptionHandler(Exception.class)
     @RequestMapping(value = "/app/services", method = RequestMethod.POST)
     public ResponseEntity<String> index() {
@@ -20,8 +28,7 @@ public class DeploymentsController {
             int containerPort = 10006;
             int servicePort = 9999;
 
-            Deployer deployer = new Deployer();
-            deployer.deploy(imageId, deploymentName, containerPort, servicePort);
+            this.kubernetesService.deployService(imageId, deploymentName, containerPort, servicePort);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
