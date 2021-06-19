@@ -1,6 +1,5 @@
 <template>
   <div>
-    <nav-bar-component/>
     <div class="md:grid md:grid-cols-2 md:gap-6">
       <div class="mt-5 md:mt-0 md:col-span-1">
         <form action="#"
@@ -93,7 +92,7 @@
 </template>
 
 <script>
-import NavBarComponent from "../../dashboard/NavBarComponent";
+import NavBarComponent from "../../NavBarComponent";
 import io from "socket.io-client";
 let socket = io.connect('http://localhost:9092/chat')
 
