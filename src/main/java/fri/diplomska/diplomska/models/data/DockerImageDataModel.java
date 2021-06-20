@@ -20,6 +20,12 @@ public class DockerImageDataModel {
     @NotNull(message = "File must be provided")
     private MultipartFile file = null;
 
+    @Optional
+    private String imageId;
+
+    @Optional
+    private long imageSize;
+
     public String getAdditionalArgs() {
         return additionalArgs;
     }
@@ -50,6 +56,22 @@ public class DockerImageDataModel {
 
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
+
+    public long getImageSize() {
+        return imageSize;
+    }
+
+    public void setImageSize(long imageSize) {
+        this.imageSize = imageSize;
     }
 
 }

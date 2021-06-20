@@ -1,6 +1,7 @@
 package fri.diplomska.diplomska.repositories;
 
 import fri.diplomska.diplomska.models.DockerImage;
+import fri.diplomska.diplomska.models.data.DockerImageDataModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,23 +16,21 @@ public class DockerImageRepositoryImpl {
     /**
      * Upsert docker image in DB
      *
-     * @param imageName The image name
-     * @param imageTag The image tag
-     * @param imageId The image id
+     * @param dockerImageDataModel The Docker image data model
      */
-    public void upsert(String imageName, String imageTag, long imageSize, String imageId) {
-        DockerImage existingDockerImage = this.dockerImageRepository.findByImageId(imageId);
+    public void upsert(DockerImageDataModel dockerImageDataModel) {
+        DockerImage existingDockerImage = this.dockerImageRepository.findByImageId(dockerImageDataModel.getImageId());
 
         if (existingDockerImage == null) {
             DockerImage dockerImage = new DockerImage();
-            dockerImage.setName(imageName);
-            dockerImage.setSize(imageSize);
-            dockerImage.setImageId(imageId);
-            dockerImage.setTag(imageTag);
+            dockerImage.setName(dockerImageDataModel.getImageName());
+            dockerImage.setSize(dockerImageDataModel.getImageSize());
+            dockerImage.setImageId(dockerImageDataModel.getImageId());
+            dockerImage.setTag(dockerImageDataModel.getImageTag());
             this.dockerImageRepository.save(dockerImage);
         } else {
-            existingDockerImage.setTag(imageTag);
-            existingDockerImage.setName(imageName);
+            existingDockerImage.setTag(dockerImageDataModel.getImageTag());
+            existingDockerImage.setName(dockerImageDataModel.getImageName());
             this.dockerImageRepository.save(existingDockerImage);
         }
     }

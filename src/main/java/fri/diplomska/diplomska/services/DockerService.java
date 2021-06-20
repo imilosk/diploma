@@ -57,8 +57,11 @@ public class DockerService {
                         imageIdFromMessage, this.socketIONamespace, "imageProgress"));
 
         long imageSize = this.dockerClient.inspectImage(returnedImageId).size();
-        this.dockerImageRepositoryImpl.upsert(imageDataModel.getImageName(), imageDataModel.getImageTag(), imageSize,
-                returnedImageId);
+
+        imageDataModel.setImageId(returnedImageId);
+        imageDataModel.setImageSize(imageSize);
+
+        this.dockerImageRepositoryImpl.upsert(imageDataModel);
 
         this.fileHelpers.deleteDirectory(filePath);
     }
