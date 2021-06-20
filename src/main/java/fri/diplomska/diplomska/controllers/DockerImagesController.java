@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 
 @RestController
@@ -27,14 +26,9 @@ public class DockerImagesController {
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.POST)
-    public ResponseEntity<String> index(@Valid DockerImageDataModel request) {
+    public ResponseEntity<String> index(@Valid DockerImageDataModel dockerImageDataModel) {
         try {
-            String imageName = request.getImageName();
-            String imageTag = request.getImageTag();
-            String additionalArgs = request.getAdditionalArgs();
-            MultipartFile file = request.getFile();
-
-            dockerService.buildImage(file, imageName, imageTag, additionalArgs);
+            dockerService.buildImage(dockerImageDataModel);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

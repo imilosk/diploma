@@ -8,11 +8,10 @@ import com.spotify.docker.client.exceptions.DockerException;
 import fri.diplomska.diplomska.helpers.DockerHelpers;
 import fri.diplomska.diplomska.helpers.FileHelpers;
 import fri.diplomska.diplomska.models.DockerImage;
+import fri.diplomska.diplomska.models.data.DockerImageDataModel;
 import fri.diplomska.diplomska.repositories.DockerImageRepositoryImpl;
 import fri.diplomska.diplomska.websockets.ImageBuildProgressModule;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.concurrent.atomic.AtomicReference;
@@ -39,29 +38,27 @@ public class DockerService {
     /**
      * Builds the Dockerfile that is contained in the given zip
      *
-     * @param file The zip file that contains Dockerfile and it's needed files to build
-     * @param imageName The image name
-     * @param imageTag The image tag (e.g. v1)
-     * @param additionalArgs Additional docker build args
+     * @param imageDataModel The data model
      * @throws InterruptedException, DockerException, IOException
      */
-    public void buildImage(MultipartFile file, String imageName, String imageTag, String additionalArgs) throws
+    public void buildImage(DockerImageDataModel imageDataModel) throws
             InterruptedException, DockerException, IOException {
 
-        imageName = imageName + ":" + imageTag;
+        String imageFullName = imageDataModel.getImageName() + ":" + imageDataModel.getImageTag();
 
         String filePath = this.fileHelpers.createTempDirectory();
-        this.fileHelpers.unzipFile(file, filePath);
+        this.fileHelpers.unzipFile(imageDataModel.getFile(), filePath);
 
 //        DockerClient.BuildParam param = DockerClient.BuildParam.create("target", "dev-env");
         final AtomicReference<String> imageIdFromMessage = new AtomicReference<>();
 
         final String returnedImageId = this.dockerClient.build(
-            Paths.get(filePath), imageName, progressMessage -> this.dockerHelpers.sendBuildProgress(progressMessage,
+            Paths.get(filePath), imageFullName, progressMessage -> this.dockerHelpers.sendBuildProgress(progressMessage,
                         imageIdFromMessage, this.socketIONamespace, "imageProgress"));
 
         long imageSize = this.dockerClient.inspectImage(returnedImageId).size();
-        this.dockerImageRepositoryImpl.upsert(imageName, imageTag, imageSize, returnedImageId);
+        this.dockerImageRepositoryImpl.upsert(imageDataModel.getImageName(), imageDataModel.getImageTag(), imageSize,
+                returnedImageId);
 
         this.fileHelpers.deleteDirectory(filePath);
     }
