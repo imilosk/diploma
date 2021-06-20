@@ -72,4 +72,14 @@ public class DockerService {
         return this.dockerImageRepositoryImpl.getAll();
     }
 
+    /**
+     * Deletes an image with the given image id
+     *
+     * @param imageId The Docker image id
+     */
+    public void deleteImage(String imageId) throws DockerException, InterruptedException {
+        this.dockerClient.removeImage(imageId);
+        this.dockerImageRepositoryImpl.deleteByImageId(imageId);
+    }
+
 }

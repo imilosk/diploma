@@ -5,11 +5,10 @@ import fri.diplomska.diplomska.models.data.DockerImageDataModel;
 import fri.diplomska.diplomska.services.DockerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RestController
 public class DockerImagesController {
@@ -21,14 +20,24 @@ public class DockerImagesController {
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.GET)
-    public @ResponseBody Iterable<DockerImage> index() {
+    public @ResponseBody Iterable<DockerImage> getAll() {
         return this.dockerService.getAllImages();
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.POST)
-    public ResponseEntity<String> index(@Valid DockerImageDataModel dockerImageDataModel) {
+    public ResponseEntity<String> add(@Valid DockerImageDataModel dockerImageDataModel) {
         try {
             dockerService.buildImage(dockerImageDataModel);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/app/images/{imageId}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable @NotNull String imageId) {
+        try {
+            dockerService.deleteImage(imageId);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

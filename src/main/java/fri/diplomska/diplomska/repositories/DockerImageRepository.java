@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface DockerImageRepository extends CrudRepository<DockerImage, Integer> {
     DockerImage findByImageId(String imageId);
+    void delete(DockerImage dockerImage);
 }
 

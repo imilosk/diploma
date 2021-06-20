@@ -59,8 +59,7 @@
               </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="dockerImage in filteredList"
-                  :key="dockerImage.imageId">
+              <tr v-for="dockerImage in filteredList" :key="dockerImage.imageId">
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm text-gray-900">{{ dockerImage.name }}</div>
                 </td>
@@ -74,7 +73,9 @@
                   <div class="text-sm text-gray-900">{{ dockerImage.size }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a class="text-red-600 hover:text-red-900" href="#">DELETE</a>
+                  <div class="text-red-600 hover:text-red-900 cursor-pointer" :id="dockerImage.imageId"
+                       v-on:click="deleteImage">DELETE
+                  </div>
                 </td>
               </tr>
               </tbody>
@@ -94,24 +95,45 @@ export default {
   components: {DropdownMenuComponent, DropdownMenu},
   data() {
     return {
-      people: [],
+      dockerImages: [],
       inputText: ''
     }
   },
   methods: {
+    deleteImage: function (e) {
+      const that = this;
 
+      const imageId = e.target.id;
+      axios.delete('/app/images/' + imageId).then(function (response) {
+        that.dockerImages = that.dockerImages.filter(function (element) {
+          return element.imageId !== imageId;
+        });
+
+        that.$toastr('add', {
+          title: 'Message',
+          msg: 'The image was deleted successfully',
+          timeout: 10000,
+          type: 'success',
+          position: 'toast-top-right',
+          closeOnHover: false,
+          clickClose: true
+        });
+      });
+    }
   },
   computed: {
     filteredList: function () {
-      return this.people.filter(human => {
-        return human.name.toLowerCase().includes(this.inputText.toLowerCase())
+      return this.dockerImages.filter(image => {
+        return image.name.toLowerCase().includes(this.inputText.toLowerCase())
       });
     }
   },
   mounted() {
     let that = this;
     axios.get('/app/images').then(function (response) {
-      that.people = response.data;
+      that.dockerImages = response.data;
+    }).catch(function (error) {
+      console.log(error.response.data.errors[0].defaultMessage);
     });
   }
 }
