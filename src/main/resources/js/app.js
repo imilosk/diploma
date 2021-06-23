@@ -24,6 +24,9 @@ const RepositoryPageComponent = resolve => {
 const K8sPageComponent = resolve => {
     require.ensure([], require => resolve(require('./components/k8s/K8sPageComponent.vue')));
 };
+const CreateNewServiceComponent = resolve => {
+    require.ensure([], require => resolve(require('./components/k8s/createNewService/CreateServiceComponent.vue')));
+};
 const DashboardPageComponent = resolve => {
     require.ensure([], require => resolve(require('./components/dashboard/DashboardPageComponent.vue')));
 };
@@ -37,6 +40,7 @@ const routes = [
     {path: '/repository', component: RepositoryPageComponent},
     {path: '/k8s', component: K8sPageComponent},
     {path: '/uploadImage', component: UploadContainerPageComponent},
+    {path: '/createService', component: CreateNewServiceComponent},
     {path: '/settings', component: Foo},
 ];
 

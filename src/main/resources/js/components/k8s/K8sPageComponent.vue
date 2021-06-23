@@ -1,23 +1,111 @@
 <template>
-  <div id="--page-k8s">
-    <p class="page-title">Kubernetes</p>
-    <div class="button-container">
-      <create-deployment-button-component @openModal="openModal"></create-deployment-button-component>
+  <div class="py-12 align-middle inline-block min-w-full sm:px-6 lg:px-24">
+    <router-link to="/createService">
+      <button
+          type="submit"
+          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"
+      >
+        Create a new service
+      </button>
+    </router-link>
+    <div class="flex justify-between mt-1 mb-10">
+      <div class="search-box">
+        <label class=" block text-sm font-medium text-gray-700">
+          Search
+        </label>
+        <input
+            id="exp"
+            class="focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border-gray-300 rounded-md"
+            name="exp"
+            placeholder='Enter name'
+            type="text"
+            v-model="inputText"
+        />
+      </div>
+      <div class="filters flex space-x-4">
+        <dropdown-menu-component/>
+        <dropdown-menu-component/>
+        <dropdown-menu-component/>
+      </div>
     </div>
-    <container-table-component></container-table-component>
-    <create-deployment-modal-component ref="modal"></create-deployment-modal-component>
+
+    <div class="flex flex-col">
+      <div class="-my-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  Name
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  Tag
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  Image id
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  Size
+                </th>
+                <th class="relative px-6 py-3"
+                    scope="col">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+              <tr v-for="service in filteredList" :key="service.imageId">
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ service.name }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ service.tag }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ service.imageId }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ service.size }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div class="text-red-600 hover:text-red-900 cursor-pointer" :id="service.imageId"
+                       v-on:click="deleteImage">DELETE
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+
+import DropdownMenuComponent from "../repository/DropdownMenuComponent";
+import DropdownMenu from "../repository/DropdownMenuComponent";
+
 export default {
+  components: {DropdownMenuComponent, DropdownMenu},
   data() {
-    return {}
-  },
-  methods: {
-    openModal() {
-      this.$refs.modal.openModal();
+    return {
+      k8sServices: [],
+      inputText: ''
     }
-  }
+  },
+  computed: {
+    filteredList: function () {
+      return this.k8sServices.filter(service => {
+        return service.name.toLowerCase().includes(this.inputText.toLowerCase())
+      });
+    }
+  },
 }
 </script>
