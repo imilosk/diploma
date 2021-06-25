@@ -1,5 +1,6 @@
 package fri.diplomska.diplomska.services;
 
+import fri.diplomska.diplomska.models.data.DeploymentDataModel;
 import io.fabric8.kubernetes.api.model.IntOrString;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.ServiceAccount;
@@ -19,21 +20,30 @@ public class KubernetesService {
         return new KubernetesService();
     }
 
-    public void deployService(String imageName, String deploymentName, int containerPort, int servicePort) {
+    public void deployService(DeploymentDataModel deployment) {
         KubernetesClient client = new DefaultKubernetesClient();
 
         String namespace = "default";
-        String serviceName = deploymentName + "service";
-        String externalName = "my." + deploymentName + ".app";
 
-        createK8sDeployment(client, imageName, deploymentName, containerPort, namespace);
-        createK8sService(client, serviceName, deploymentName, externalName, containerPort, servicePort, namespace);
+        deployment.setNamespace(namespace);
+        this.createK8sDeployment(client, deployment);
+
+        String serviceName = deployment.getDeploymentName() + "service";
+        String externalName = "my." + deployment.getDeploymentName() + ".app";
+
+        this.createK8sService(client, serviceName, deployment.getDeploymentName(), externalName,
+                deployment.getContainerPort(),
+                deployment.getServicePort(), namespace);
     }
 
-    private void createK8sDeployment(KubernetesClient client, String imageName, String deploymentName,
-                                     int containerPort, String namespace) {
+    private void createK8sDeployment(KubernetesClient client, DeploymentDataModel deploymentDataModel) {
         ServiceAccount fabric8 = new ServiceAccountBuilder().withNewMetadata().withName("fabric8").endMetadata().build();
         client.serviceAccounts().inNamespace("default").createOrReplace(fabric8);
+
+        String deploymentName = deploymentDataModel.getDeploymentName();
+        String imageName = deploymentDataModel.getImageName() + ":" + deploymentDataModel.getImageTag();
+        int containerPort = deploymentDataModel.getContainerPort();
+        String namespace = deploymentDataModel.getNamespace();
 
         Deployment deployment = new DeploymentBuilder()
                 .withNewMetadata()
@@ -62,7 +72,6 @@ public class KubernetesService {
                 .build();
 
         deployment = client.apps().deployments().inNamespace(namespace).createOrReplace(deployment);
-        System.out.println("Created deployment: " + deployment);
     }
 
     private void createK8sService(KubernetesClient client, String serviceName, String deploymentName,
@@ -90,6 +99,5 @@ public class KubernetesService {
                 .endStatus()
                 .done();
 
-        System.out.println("Created service:" + createdSvc);
     }
 }

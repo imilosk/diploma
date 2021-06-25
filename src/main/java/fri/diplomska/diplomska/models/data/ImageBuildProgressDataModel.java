@@ -6,9 +6,6 @@ public class ImageBuildProgressDataModel {
     private String progress;
     private String message;
 
-    public ImageBuildProgressDataModel() {
-    }
-
     public String getProgress() {
         return progress;
     }

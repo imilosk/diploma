@@ -20,10 +20,7 @@ public class DockerImageDataModel {
     @NotNull(message = "File must be provided")
     private MultipartFile file = null;
 
-    @Optional
     private String imageId;
-
-    @Optional
     private long imageSize;
 
     public String getAdditionalArgs() {

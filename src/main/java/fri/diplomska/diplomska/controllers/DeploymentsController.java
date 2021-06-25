@@ -1,11 +1,14 @@
 package fri.diplomska.diplomska.controllers;
 
+import fri.diplomska.diplomska.models.data.DeploymentDataModel;
 import fri.diplomska.diplomska.services.KubernetesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 public class DeploymentsController {
@@ -17,14 +20,10 @@ public class DeploymentsController {
     }
 
     @RequestMapping(value = "/app/services", method = RequestMethod.POST)
-    public ResponseEntity<String> index() {
+    public ResponseEntity<String> index(@Valid DeploymentDataModel deploymentDataModel) {
+        deploymentDataModel.setNamespace(null);
         try {
-            String imageId = "nodejs_test:v1";
-            String deploymentName = "diplomska";
-            int containerPort = 10006;
-            int servicePort = 9999;
-
-            this.kubernetesService.deployService(imageId, deploymentName, containerPort, servicePort);
+            this.kubernetesService.deployService(deploymentDataModel);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
