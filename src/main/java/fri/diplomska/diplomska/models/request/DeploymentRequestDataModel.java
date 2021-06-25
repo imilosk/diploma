@@ -1,19 +1,8 @@
-package fri.diplomska.diplomska.models.data;
-
-import fri.diplomska.diplomska.models.request.DeploymentRequestDataModel;
+package fri.diplomska.diplomska.models.request;
 
 import javax.validation.constraints.NotBlank;
 
-public class DeploymentDataModel {
-
-    public DeploymentDataModel() { }
-
-    public DeploymentDataModel(DeploymentRequestDataModel request) {
-        this.imageName = request.getImageName();
-        this.imageTag = request.getImageTag();
-        this.deploymentName = request.getDeploymentName();
-        this.containerPort = request.getContainerPort();
-    }
+public class DeploymentRequestDataModel {
 
     @NotBlank(message = "Image name is mandatory")
     private String imageName;
@@ -24,9 +13,12 @@ public class DeploymentDataModel {
     @NotBlank(message = "Deployment name is mandatory")
     private String deploymentName;
 
+    @NotBlank(message = "Service DNS name is mandatory")
+    private String serviceDnsName;
+
     private int containerPort;
 
-    private String namespace;
+    private int servicePort;
 
     public String getImageName() {
         return imageName;
@@ -60,12 +52,19 @@ public class DeploymentDataModel {
         this.containerPort = containerPort;
     }
 
-    public String getNamespace() {
-        return namespace;
+    public int getServicePort() {
+        return servicePort;
     }
 
-    public void setNamespace(String namespace) {
-        this.namespace = namespace;
+    public void setServicePort(int servicePort) {
+        this.servicePort = servicePort;
     }
 
+    public String getServiceDnsName() {
+        return serviceDnsName;
+    }
+
+    public void setServiceDnsName(String serviceDnsName) {
+        this.serviceDnsName = serviceDnsName;
+    }
 }
