@@ -1,25 +1,24 @@
-package fri.diplomska.diplomska.models.data;
+package fri.diplomska.diplomska.models.request;
 
-import fri.diplomska.diplomska.models.request.DockerImageRequestDataModel;
+import org.jvnet.hk2.annotations.Optional;
 import org.springframework.web.multipart.MultipartFile;
 
-public class DockerImageDataModel {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-    public DockerImageDataModel() { }
+public class DockerImageRequestDataModel {
 
-    public DockerImageDataModel(DockerImageRequestDataModel request) {
-        this.imageName = request.getImageName();
-        this.imageTag = request.getImageTag();
-        this.additionalArgs = request.getAdditionalArgs();
-        this.file = request.getFile();
-    }
-
+    @NotBlank(message = "Image name is mandatory")
     private String imageName;
+
+    @NotBlank(message = "Image tag is mandatory")
     private String imageTag;
+
+    @Optional
     private String additionalArgs;
+
+    @NotNull(message = "File must be provided")
     private MultipartFile file = null;
-    private String imageId;
-    private long imageSize;
 
     public String getAdditionalArgs() {
         return additionalArgs;
@@ -51,22 +50,6 @@ public class DockerImageDataModel {
 
     public void setFile(MultipartFile file) {
         this.file = file;
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
-    public long getImageSize() {
-        return imageSize;
-    }
-
-    public void setImageSize(long imageSize) {
-        this.imageSize = imageSize;
     }
 
 }

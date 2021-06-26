@@ -2,10 +2,12 @@ package fri.diplomska.diplomska.controllers;
 
 import fri.diplomska.diplomska.models.DockerImage;
 import fri.diplomska.diplomska.models.data.DockerImageDataModel;
+import fri.diplomska.diplomska.models.request.DockerImageRequestDataModel;
 import fri.diplomska.diplomska.services.DockerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -24,10 +26,9 @@ public class DockerImagesController {
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.POST)
-    public ResponseEntity<String> add(@Valid DockerImageDataModel dockerImageDataModel) {
-        dockerImageDataModel.setImageId(null);
-        dockerImageDataModel.setImageSize(0);
+    public ResponseEntity<String> add(@Valid DockerImageRequestDataModel request) {
         try {
+            DockerImageDataModel dockerImageDataModel = new DockerImageDataModel(request);
             dockerService.buildImage(dockerImageDataModel);
         } catch (Exception e) {
             return new ResponseEntity<String>(e.toString(), HttpStatus.INTERNAL_SERVER_ERROR);

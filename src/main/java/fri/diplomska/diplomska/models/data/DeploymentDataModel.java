@@ -2,8 +2,6 @@ package fri.diplomska.diplomska.models.data;
 
 import fri.diplomska.diplomska.models.request.DeploymentRequestDataModel;
 
-import javax.validation.constraints.NotBlank;
-
 public class DeploymentDataModel {
 
     public DeploymentDataModel() { }
@@ -15,17 +13,10 @@ public class DeploymentDataModel {
         this.containerPort = request.getContainerPort();
     }
 
-    @NotBlank(message = "Image name is mandatory")
     private String imageName;
-
-    @NotBlank(message = "Image tag is mandatory")
     private String imageTag;
-
-    @NotBlank(message = "Deployment name is mandatory")
     private String deploymentName;
-
     private int containerPort;
-
     private String namespace;
 
     public String getImageName() {
