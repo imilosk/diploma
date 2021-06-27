@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KubernetesHelpers {
 
-    public void createK8sDeployment(KubernetesClient client, DeploymentDataModel deploymentDataModel) {
+    public void createOrUpdateK8sDeployment(KubernetesClient client, DeploymentDataModel deploymentDataModel) {
         String deploymentName = deploymentDataModel.getDeploymentName();
         String imageName = deploymentDataModel.getImageName() + ":" + deploymentDataModel.getImageTag();
         int containerPort = deploymentDataModel.getContainerPort();
@@ -28,7 +28,7 @@ public class KubernetesHelpers {
                 .withName(deploymentName)
                 .endMetadata()
                 .withNewSpec()
-                .withReplicas(1)
+                .withReplicas(deploymentDataModel.getReplicas())
                 .withNewTemplate()
                 .withNewMetadata()
                 .addToLabels("app", deploymentName)
@@ -52,7 +52,7 @@ public class KubernetesHelpers {
         deployment = client.apps().deployments().inNamespace(namespace).createOrReplace(deployment);
     }
 
-    public void createK8sService(KubernetesClient client, K8sServiceDataModel service) {
+    public void createOrUpdateK8sService(KubernetesClient client, K8sServiceDataModel service) {
         String namespace = service.getNamespace();
         String serviceName = service.getServiceName();
         String externalName = service.getDnsName();
@@ -82,6 +82,20 @@ public class KubernetesHelpers {
                 .endLoadBalancer()
                 .endStatus()
                 .done();
+    }
+
+    public void deleteDeployment(KubernetesClient client, String name, String namespace) throws Exception {
+        boolean isDeleted = client.apps().deployments().inNamespace(namespace).withName(name).delete();
+        if (!isDeleted) {
+            throw new Exception("Deployment deletion error");
+        }
+    }
+
+    public void deleteService(KubernetesClient client, String name, String namespace) throws Exception {
+        boolean isDeleted = client.services().inNamespace(namespace).withName(name).delete();
+        if (!isDeleted) {
+            throw new Exception("Service deletion error");
+        }
     }
 
 }

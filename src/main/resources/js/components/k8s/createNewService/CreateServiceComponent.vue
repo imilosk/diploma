@@ -59,6 +59,20 @@
                       type="text"
                       v-model="serviceDnsName"
                   />
+
+                  <label class="block text-sm font-medium text-gray-700"
+                         for="replicas_id">
+                    Replicas
+                  </label>
+                  <input
+                      id="replicas_id"
+                      class="mt-1 mb-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      name="replicas"
+                      placeholder='3'
+                      type="number"
+                      v-model="replicas"
+                  />
+
                   <label class="block text-sm font-medium text-gray-700"
                          for="container_port_id">
                     Container port
@@ -124,6 +138,7 @@ export default {
       serviceDnsName: '',
       containerPort: '',
       servicePort: '',
+      replicas: '',
     }
   },
   methods: {
@@ -137,9 +152,10 @@ export default {
       bodyFormData.append('serviceDnsName', this.serviceDnsName);
       bodyFormData.append('containerPort', this.containerPort);
       bodyFormData.append('servicePort', this.servicePort);
+      bodyFormData.append('replicas', this.replicas);
 
       let that = this;
-      axios.post('/app/services', bodyFormData).then(function (response) {
+      axios.post('/app/deployments', bodyFormData).then(function (response) {
         that.$toastr('add', {
           title: 'Message',
           msg: 'Your service was created successfully',

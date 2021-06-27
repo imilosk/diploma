@@ -11,12 +11,14 @@ public class DeploymentDataModel {
         this.imageTag = request.getImageTag();
         this.deploymentName = request.getDeploymentName();
         this.containerPort = request.getContainerPort();
+        this.replicas = request.getReplicas();
     }
 
     private String imageName;
     private String imageTag;
     private String deploymentName;
     private int containerPort;
+    private int replicas;
     private String namespace;
 
     public String getImageName() {
@@ -59,4 +61,11 @@ public class DeploymentDataModel {
         this.namespace = namespace;
     }
 
+    public int getReplicas() {
+        return replicas;
+    }
+
+    public void setReplicas(int replicas) {
+        this.replicas = replicas;
+    }
 }

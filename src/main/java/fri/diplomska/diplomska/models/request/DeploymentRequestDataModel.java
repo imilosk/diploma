@@ -16,6 +16,8 @@ public class DeploymentRequestDataModel {
     @NotBlank(message = "Service DNS name is mandatory")
     private String serviceDnsName;
 
+    private int replicas;
+
     private int containerPort;
 
     private int servicePort;
@@ -66,5 +68,13 @@ public class DeploymentRequestDataModel {
 
     public void setServiceDnsName(String serviceDnsName) {
         this.serviceDnsName = serviceDnsName;
+    }
+
+    public int getReplicas() {
+        return replicas;
+    }
+
+    public void setReplicas(int replicas) {
+        this.replicas = replicas;
     }
 }

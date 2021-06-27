@@ -11,7 +11,7 @@ import java.util.Date;
 public class DockerImage {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotNull
