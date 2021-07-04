@@ -84,9 +84,7 @@
           </div>
         </form>
       </div>
-
-      <terminal-component ref="terminal" @hook:mounted="setTerminalMounted"/>
-
+      <terminal-component ref="terminal" v-if="renderComponent"/>
     </div>
   </div>
 </template>
@@ -105,7 +103,8 @@ export default {
       imageName: '',
       imageTag: '',
       additionalArgs: '',
-      isTerminalMounted: false,
+      terminalComponentKey: 0,
+      renderComponent: true
     }
   },
   methods: {
@@ -145,14 +144,16 @@ export default {
         });
       });
     },
-    setTerminalMounted() {
-      this.isTerminalMounted = true;
+    forceRerender: function () {
+      this.renderComponent = false;
+
+      this.$nextTick(() => {
+        this.renderComponent = true;
+      });
     }
   },
 
   mounted() {
-    console.log('mounted');
-
     let that = this;
 
     socket.on('connect', function () {
