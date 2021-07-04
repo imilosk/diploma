@@ -154,7 +154,7 @@ export default {
     socket.on('imageProgress', (data) => {
       const arrayLength = this.lines.length;
       let lastItem = this.lines[arrayLength - 1];
-      if (data.message != lastItem && data.message != null) {
+      if (data.message != lastItem && data.message != null && data.message !== 'null') {
         this.lines.push(data.message);
         let container = this.$el.querySelector(".fakeScreen");
         container.scrollTop = container.scrollHeight;
