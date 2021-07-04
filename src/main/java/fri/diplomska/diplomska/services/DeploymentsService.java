@@ -49,7 +49,7 @@ public class DeploymentsService {
      */
     public void deleteDeployment(String name, String namespace) throws Exception {
         this.kubernetesHelpers.deleteDeployment(this.k8sClient, name, namespace);
-        String serviceName = name + "service";
+        String serviceName = name + "-service";
         this.kubernetesHelpers.deleteService(this.k8sClient, serviceName, namespace);
         this.deploymentRepositoryImpl.deleteByName(name);
     }

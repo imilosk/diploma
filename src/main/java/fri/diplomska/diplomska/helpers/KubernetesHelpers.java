@@ -55,7 +55,6 @@ public class KubernetesHelpers {
     public void createOrUpdateK8sService(KubernetesClient client, K8sServiceDataModel service) {
         String namespace = service.getNamespace();
         String serviceName = service.getServiceName();
-        String externalName = service.getDnsName();
         int servicePort = service.getServicePort();
         int containerPort = service.getDeploymentDataModel().getContainerPort();
         String deploymentName = service.getDeploymentDataModel().getDeploymentName();
@@ -66,12 +65,11 @@ public class KubernetesHelpers {
             .endMetadata()
             .withNewSpec()
                 .withType("LoadBalancer")
-                    .withExternalName(externalName)
                     .addNewPort()
-                    .withName(Integer.toString(servicePort))
-                    .withProtocol("TCP")
-                    .withPort(servicePort)
-                        .withTargetPort(new IntOrString(containerPort))
+                        .withName(Integer.toString(servicePort))
+                        .withProtocol("TCP")
+                        .withPort(servicePort)
+                            .withTargetPort(new IntOrString(containerPort))
                     .endPort()
                     .addToSelector("app", deploymentName)
             .endSpec()

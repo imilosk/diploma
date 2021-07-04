@@ -8,12 +8,10 @@ public class K8sServiceDataModel {
 
     public K8sServiceDataModel(DeploymentRequestDataModel request) {
         this.servicePort = request.getServicePort();
-        this.dnsName = request.getServiceDnsName();
     }
 
     private String serviceName;
     private DeploymentDataModel deploymentDataModel;
-    private String dnsName;
     private int servicePort;
     private String namespace;
 
@@ -31,14 +29,6 @@ public class K8sServiceDataModel {
 
     public void setDeploymentDataModel(DeploymentDataModel deploymentDataModel) {
         this.deploymentDataModel = deploymentDataModel;
-    }
-
-    public String getDnsName() {
-        return dnsName;
-    }
-
-    public void setDnsName(String dnsName) {
-        this.dnsName = dnsName;
     }
 
     public int getServicePort() {

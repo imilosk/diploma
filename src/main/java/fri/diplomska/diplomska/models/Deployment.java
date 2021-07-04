@@ -24,9 +24,6 @@ public class Deployment {
     private String imageTag;
 
     @NotNull
-    private String dnsName;
-
-    @NotNull
     private int containerPort;
 
     @NotNull
@@ -76,14 +73,6 @@ public class Deployment {
 
     public void setImageTag(String imageTag) {
         this.imageTag = imageTag;
-    }
-
-    public String getDnsName() {
-        return dnsName;
-    }
-
-    public void setDnsName(String dnsName) {
-        this.dnsName = dnsName;
     }
 
     public int getContainerPort() {
