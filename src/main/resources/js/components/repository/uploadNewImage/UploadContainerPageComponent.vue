@@ -84,7 +84,7 @@
           </div>
         </form>
       </div>
-      <terminal-component ref="terminal" v-if="renderComponent"/>
+      <terminal-component ref="terminal" v-bind:lines="lines" v-bind:progress="progress" />
     </div>
   </div>
 </template>
@@ -103,8 +103,8 @@ export default {
       imageName: '',
       imageTag: '',
       additionalArgs: '',
-      terminalComponentKey: 0,
-      renderComponent: true
+      lines: [],
+      progress: '',
     }
   },
   methods: {
@@ -144,37 +144,30 @@ export default {
         });
       });
     },
-    forceRerender: function () {
-      this.renderComponent = false;
-
-      this.$nextTick(() => {
-        this.renderComponent = true;
-      });
-    }
   },
 
   mounted() {
-    let that = this;
-
     socket.on('connect', function () {
       console.log('connected');
     });
 
-    socket.on('imageProgress', function (data) {
-      const arrayLength = that.$refs.terminal.lines.length;
-      let lastItem = that.$refs.terminal.lines[arrayLength - 1];
-      if (data.message != lastItem && data.message != null){
-        that.$refs.terminal.lines.push(data.message);
-        let container = that.$el.querySelector(".fakeScreen");
+    socket.on('imageProgress', (data) => {
+      const arrayLength = this.lines.length;
+      let lastItem = this.lines[arrayLength - 1];
+      if (data.message != lastItem && data.message != null) {
+        this.lines.push(data.message);
+        let container = this.$el.querySelector(".fakeScreen");
         container.scrollTop = container.scrollHeight;
       }
 
       if (data.progress != null) {
-        that.$refs.terminal.progress = data.progress;
+        this.progress = data.progress;
       }
-
     });
-  }
 
+    socket.on('disconnected', () => {
+      console.log('disconnected');
+    });
+  },
 }
 </script>

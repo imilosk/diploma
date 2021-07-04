@@ -15,12 +15,10 @@
 
 <script>
   export default {
-    data() {
-      return {
-        lines: [],
-        progress: ''
-      }
-    }
+    props: {
+      lines: [],
+      progress: '',
+    },
   }
 </script>
 
