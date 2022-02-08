@@ -4,35 +4,22 @@ import javax.validation.constraints.NotBlank;
 
 public class DeploymentRequestDataModel {
 
-    @NotBlank(message = "Image name is mandatory")
-    private String imageName;
-
-    @NotBlank(message = "Image tag is mandatory")
-    private String imageTag;
+    @NotBlank(message = "Image id is mandatory")
+    private String imageId;
 
     @NotBlank(message = "Deployment name is mandatory")
     private String deploymentName;
 
     private int replicas;
 
-    private int containerPort;
-
     private int servicePort;
 
-    public String getImageName() {
-        return imageName;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public String getImageTag() {
-        return imageTag;
-    }
-
-    public void setImageTag(String imageTag) {
-        this.imageTag = imageTag;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getDeploymentName() {
@@ -41,14 +28,6 @@ public class DeploymentRequestDataModel {
 
     public void setDeploymentName(String deploymentName) {
         this.deploymentName = deploymentName;
-    }
-
-    public int getContainerPort() {
-        return containerPort;
-    }
-
-    public void setContainerPort(int containerPort) {
-        this.containerPort = containerPort;
     }
 
     public int getServicePort() {

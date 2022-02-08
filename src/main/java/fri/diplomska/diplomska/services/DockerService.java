@@ -5,6 +5,7 @@ import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.exceptions.DockerCertificateException;
 import com.spotify.docker.client.exceptions.DockerException;
+import com.spotify.docker.client.messages.ImageInfo;
 import fri.diplomska.diplomska.helpers.DockerHelpers;
 import fri.diplomska.diplomska.helpers.FileHelpers;
 import fri.diplomska.diplomska.models.DockerImage;
@@ -57,10 +58,17 @@ public class DockerService {
             Paths.get(filePath), imageFullName, progressMessage -> this.dockerHelpers.sendBuildProgress(progressMessage,
                         imageIdFromMessage, this.socketIONamespace, "imageProgress"));
 
-        long imageSize = this.dockerClient.inspectImage(returnedImageId).size();
+        ImageInfo imageInfo = this.dockerClient.inspectImage(returnedImageId);
+        long imageSize = imageInfo.size();
+        String os = imageInfo.os();
+        String architecture = imageInfo.architecture();
+        String exposedPort = imageInfo.containerConfig().exposedPorts().toArray()[0].toString();
 
         imageDataModel.setImageId(returnedImageId);
         imageDataModel.setImageSize(imageSize);
+        imageDataModel.setOs(os);
+        imageDataModel.setArchitecture(architecture);
+        imageDataModel.setExposedPort(exposedPort);
 
         this.dockerImageRepositoryImpl.upsert(imageDataModel);
 

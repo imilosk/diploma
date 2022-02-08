@@ -19,20 +19,20 @@ public class DockerImageRepositoryImpl {
      * @param dockerImageDataModel The Docker image data model
      */
     public void upsert(DockerImageDataModel dockerImageDataModel) {
-        DockerImage existingDockerImage = this.dockerImageRepository.findByImageId(dockerImageDataModel.getImageId());
+        DockerImage dockerImage = this.dockerImageRepository.findByImageId(dockerImageDataModel.getImageId());
 
-        if (existingDockerImage == null) {
-            DockerImage dockerImage = new DockerImage();
-            dockerImage.setName(dockerImageDataModel.getImageName());
-            dockerImage.setSize(dockerImageDataModel.getImageSize());
-            dockerImage.setImageId(dockerImageDataModel.getImageId());
-            dockerImage.setTag(dockerImageDataModel.getImageTag());
-            this.dockerImageRepository.save(dockerImage);
-        } else {
-            existingDockerImage.setTag(dockerImageDataModel.getImageTag());
-            existingDockerImage.setName(dockerImageDataModel.getImageName());
-            this.dockerImageRepository.save(existingDockerImage);
+        if (dockerImage == null) {
+            dockerImage = new DockerImage();
         }
+
+        dockerImage.setName(dockerImageDataModel.getImageName());
+        dockerImage.setSize(dockerImageDataModel.getImageSize());
+        dockerImage.setImageId(dockerImageDataModel.getImageId());
+        dockerImage.setTag(dockerImageDataModel.getImageTag());
+        dockerImage.setOs(dockerImageDataModel.getOs());
+        dockerImage.setArchitecture(dockerImageDataModel.getArchitecture());
+        dockerImage.setExposedPort(dockerImageDataModel.getExposedPort());
+        this.dockerImageRepository.save(dockerImage);
     }
 
     /**

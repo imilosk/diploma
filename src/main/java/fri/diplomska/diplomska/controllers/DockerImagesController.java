@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -22,7 +23,8 @@ public class DockerImagesController {
 
     @RequestMapping(value = "/app/images", method = RequestMethod.GET)
     public @ResponseBody Iterable<DockerImage> getAll() {
-        return this.dockerService.getAllImages();
+        Iterable<DockerImage> d =  this.dockerService.getAllImages();
+        return d;
     }
 
     @RequestMapping(value = "/app/images", method = RequestMethod.POST)

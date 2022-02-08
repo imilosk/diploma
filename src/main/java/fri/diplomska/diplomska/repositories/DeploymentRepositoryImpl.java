@@ -27,8 +27,7 @@ public class DeploymentRepositoryImpl {
             deployment.setName(deploymentDataModel.getDeploymentName());
         }
 
-        deployment.setImageName(deploymentDataModel.getImageName());
-        deployment.setImageTag(deploymentDataModel.getImageTag());
+        deployment.setImageId(deploymentDataModel.getImageId());
         deployment.setContainerPort(deploymentDataModel.getContainerPort());
         deployment.setServicePort(serviceDataModel.getServicePort());
         deployment.setReplicas(deploymentDataModel.getReplicas());

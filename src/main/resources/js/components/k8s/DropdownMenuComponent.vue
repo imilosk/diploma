@@ -1,8 +1,8 @@
 <template>
   <div>
     <dropdown-arrow/>
-    <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
-      <option>Choose a color</option>
+    <select class="mt-1 mb-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+      <option>Choose an image</option>
       <option v-for="color in colors">{{ color }}</option>
     </select>
   </div>

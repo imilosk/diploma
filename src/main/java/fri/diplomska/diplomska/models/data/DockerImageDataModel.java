@@ -20,6 +20,9 @@ public class DockerImageDataModel {
     private MultipartFile file = null;
     private String imageId;
     private long imageSize;
+    private String os;
+    private String architecture;
+    private String exposedPort;
 
     public String getAdditionalArgs() {
         return additionalArgs;
@@ -69,4 +72,27 @@ public class DockerImageDataModel {
         this.imageSize = imageSize;
     }
 
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getArchitecture() {
+        return architecture;
+    }
+
+    public void setArchitecture(String architecture) {
+        this.architecture = architecture;
+    }
+
+    public String getExposedPort() {
+        return exposedPort;
+    }
+
+    public void setExposedPort(String exposedPort) {
+        this.exposedPort = exposedPort;
+    }
 }

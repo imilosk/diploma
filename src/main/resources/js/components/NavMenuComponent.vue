@@ -11,13 +11,6 @@
         </li>
 
         <li class="nav-item">
-          <router-link class="nav-link" to="/dashboard">
-            <dashboard-icon/>
-            <span class="link-text">Dashboard</span>
-          </router-link>
-        </li>
-
-        <li class="nav-item">
           <router-link class="nav-link" to="/repository">
             <docker-icon/>
             <span class="link-text">Repository</span>
@@ -28,13 +21,6 @@
           <router-link class="nav-link" to="/k8s">
             <kubernetes-icon/>
             <span class="link-text">Kubernetes</span>
-          </router-link>
-        </li>
-
-        <li class="nav-item">
-          <router-link class="nav-link" to="/settings">
-            <settings-icon/>
-            <span class="link-text">Settings</span>
           </router-link>
         </li>
 

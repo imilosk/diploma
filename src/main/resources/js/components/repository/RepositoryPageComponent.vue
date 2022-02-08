@@ -3,7 +3,7 @@
     <router-link to="/uploadImage">
       <button
           type="submit"
-          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"
+          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-white-600"
       >
         Upload a new image
       </button>
@@ -21,11 +21,6 @@
             type="text"
             v-model="inputText"
         />
-      </div>
-      <div class="filters flex space-x-4">
-        <dropdown-menu-component/>
-        <dropdown-menu-component/>
-        <dropdown-menu-component/>
       </div>
     </div>
 
@@ -52,6 +47,14 @@
                     scope="col">
                   Size
                 </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  OS
+                </th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    scope="col">
+                  Architecture
+                </th>
                 <th class="relative px-6 py-3"
                     scope="col">
                   <span class="sr-only">Edit</span>
@@ -70,7 +73,13 @@
                   <div class="text-sm text-gray-900">{{ dockerImage.imageId }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{ dockerImage.size }}</div>
+                  <div class="text-sm text-gray-900">{{ (dockerImage.size / 1000000).toFixed(2) }} MB</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ dockerImage.os }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ dockerImage.architecture }}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div class="text-red-600 hover:text-red-900 cursor-pointer" :id="dockerImage.imageId"
@@ -88,11 +97,8 @@
 </template>
 
 <script>
-import DropdownMenu from "./DropdownMenuComponent";
-import DropdownMenuComponent from "./DropdownMenuComponent";
 
 export default {
-  components: {DropdownMenuComponent, DropdownMenu},
   data() {
     return {
       dockerImages: [],

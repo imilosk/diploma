@@ -2,9 +2,11 @@ package fri.diplomska.diplomska.services;
 
 import fri.diplomska.diplomska.helpers.KubernetesHelpers;
 import fri.diplomska.diplomska.models.Deployment;
+import fri.diplomska.diplomska.models.DockerImage;
 import fri.diplomska.diplomska.models.data.DeploymentDataModel;
 import fri.diplomska.diplomska.models.data.K8sServiceDataModel;
 import fri.diplomska.diplomska.repositories.DeploymentRepositoryImpl;
+import fri.diplomska.diplomska.repositories.DockerImageRepositoryImpl;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import org.springframework.stereotype.Component;
@@ -15,10 +17,13 @@ public class DeploymentsService {
     private final KubernetesHelpers kubernetesHelpers;
     private final KubernetesClient k8sClient;
     private final DeploymentRepositoryImpl deploymentRepositoryImpl;
+    private final DockerImageRepositoryImpl dockerImageRepositoryImpl;
 
-    public DeploymentsService(KubernetesHelpers kubernetesHelpers, DeploymentRepositoryImpl deploymentRepository) {
+    public DeploymentsService(KubernetesHelpers kubernetesHelpers, DeploymentRepositoryImpl deploymentRepository,
+                              DockerImageRepositoryImpl dockerImageRepository) {
         this.kubernetesHelpers = kubernetesHelpers;
         this.deploymentRepositoryImpl = deploymentRepository;
+        this.dockerImageRepositoryImpl = dockerImageRepository;
         this.k8sClient = new DefaultKubernetesClient();
     }
 
@@ -28,6 +33,13 @@ public class DeploymentsService {
      * @param service The K8s service data model
      */
     public void deployService(DeploymentDataModel deployment, K8sServiceDataModel service) {
+        DockerImage image = this.dockerImageRepositoryImpl.get(deployment.getImageId());
+        deployment.setImageName(image.getName());
+        deployment.setImageTag(image.getTag());
+
+        int containerPort = Integer.parseInt(image.getExposedPort().split("/")[0]);
+        deployment.setContainerPort(containerPort);
+
         this.kubernetesHelpers.createOrUpdateK8sDeployment(this.k8sClient, deployment);
         this.kubernetesHelpers.createOrUpdateK8sService(this.k8sClient, service);
         this.deploymentRepositoryImpl.upsert(deployment, service);

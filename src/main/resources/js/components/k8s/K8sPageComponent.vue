@@ -3,7 +3,7 @@
     <router-link to="/createService">
       <button
           type="submit"
-          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-green-600"
+          class="inline-flex py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-white-600"
       >
         Create a new deployment
       </button>
@@ -21,11 +21,6 @@
             type="text"
             v-model="inputText"
         />
-      </div>
-      <div class="filters flex space-x-4">
-        <dropdown-menu-component/>
-        <dropdown-menu-component/>
-        <dropdown-menu-component/>
       </div>
     </div>
 
@@ -94,11 +89,7 @@
 
 <script>
 
-import DropdownMenuComponent from "../repository/DropdownMenuComponent";
-import DropdownMenu from "../repository/DropdownMenuComponent";
-
 export default {
-  components: {DropdownMenuComponent, DropdownMenu},
   data() {
     return {
       deployments: [],

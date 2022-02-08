@@ -4,16 +4,16 @@ import fri.diplomska.diplomska.models.request.DeploymentRequestDataModel;
 
 public class DeploymentDataModel {
 
-    public DeploymentDataModel() { }
+    public DeploymentDataModel() {
+    }
 
     public DeploymentDataModel(DeploymentRequestDataModel request) {
-        this.imageName = request.getImageName();
-        this.imageTag = request.getImageTag();
+        this.imageId = request.getImageId();
         this.deploymentName = request.getDeploymentName();
-        this.containerPort = request.getContainerPort();
         this.replicas = request.getReplicas();
     }
 
+    private String imageId;
     private String imageName;
     private String imageTag;
     private String deploymentName;
@@ -21,20 +21,12 @@ public class DeploymentDataModel {
     private int replicas;
     private String namespace;
 
-    public String getImageName() {
-        return imageName;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public String getImageTag() {
-        return imageTag;
-    }
-
-    public void setImageTag(String imageTag) {
-        this.imageTag = imageTag;
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public String getDeploymentName() {
@@ -67,5 +59,21 @@ public class DeploymentDataModel {
 
     public void setReplicas(int replicas) {
         this.replicas = replicas;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageTag() {
+        return imageTag;
+    }
+
+    public void setImageTag(String imageTag) {
+        this.imageTag = imageTag;
     }
 }

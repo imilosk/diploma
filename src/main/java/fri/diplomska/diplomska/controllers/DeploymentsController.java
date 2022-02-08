@@ -1,7 +1,6 @@
 package fri.diplomska.diplomska.controllers;
 
 import fri.diplomska.diplomska.models.Deployment;
-import fri.diplomska.diplomska.models.DockerImage;
 import fri.diplomska.diplomska.models.data.DeploymentDataModel;
 import fri.diplomska.diplomska.models.data.K8sServiceDataModel;
 import fri.diplomska.diplomska.models.request.DeploymentRequestDataModel;
@@ -25,7 +24,8 @@ public class DeploymentsController {
     @RequestMapping(value = "/app/deployments", method = RequestMethod.GET)
     public @ResponseBody
     Iterable<Deployment> getAll() {
-        return this.kubernetesService.getAllDeployments();
+        Iterable<Deployment> d = this.kubernetesService.getAllDeployments();
+        return d;
     }
 
     @RequestMapping(value = "/app/deployments", method = RequestMethod.POST)

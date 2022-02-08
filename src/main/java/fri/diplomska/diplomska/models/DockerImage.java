@@ -25,7 +25,16 @@ public class DockerImage {
 
     @NotNull
     private long size;
-    
+
+    @NotNull
+    private String os;
+
+    @NotNull
+    private String architecture;
+
+    @NotNull
+    private String exposedPort;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -90,4 +99,27 @@ public class DockerImage {
         this.name = name;
     }
 
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getArchitecture() {
+        return architecture;
+    }
+
+    public void setArchitecture(String architecture) {
+        this.architecture = architecture;
+    }
+
+    public String getExposedPort() {
+        return exposedPort;
+    }
+
+    public void setExposedPort(String exposedPort) {
+        this.exposedPort = exposedPort;
+    }
 }

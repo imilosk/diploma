@@ -18,6 +18,9 @@ public class Deployment {
     private String name;
 
     @NotNull
+    private String imageId;
+
+    @NotNull
     private String imageName;
 
     @NotNull
@@ -59,12 +62,12 @@ public class Deployment {
         this.name = name;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getImageId() {
+        return imageId;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setImageId(String imageName) {
+        this.imageId = imageName;
     }
 
     public String getImageTag() {
@@ -121,5 +124,13 @@ public class Deployment {
 
     public void setNamespace(String namespace) {
         this.namespace = namespace;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }
