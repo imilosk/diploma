@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class KubernetesHelpers {
 
     public void createOrUpdateK8sDeployment(KubernetesClient client, DeploymentDataModel deploymentDataModel) {
-        String deploymentName = deploymentDataModel.getDeploymentName();
+        String deploymentName = "mynodeproject";
         String imageName = deploymentDataModel.getImageName() + ":" + deploymentDataModel.getImageTag();
         int containerPort = deploymentDataModel.getContainerPort();
         String namespace = deploymentDataModel.getNamespace();

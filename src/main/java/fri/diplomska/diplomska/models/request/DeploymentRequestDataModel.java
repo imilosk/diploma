@@ -4,10 +4,8 @@ import javax.validation.constraints.NotBlank;
 
 public class DeploymentRequestDataModel {
 
-    @NotBlank(message = "Image id is mandatory")
     private String imageId;
 
-    @NotBlank(message = "Deployment name is mandatory")
     private String deploymentName;
 
     private int replicas;

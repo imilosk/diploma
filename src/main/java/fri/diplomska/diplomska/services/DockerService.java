@@ -46,7 +46,7 @@ public class DockerService {
     public void buildImage(DockerImageDataModel imageDataModel) throws
             InterruptedException, DockerException, IOException {
 
-        String imageFullName = imageDataModel.getImageName() + ":" + imageDataModel.getImageTag();
+        String imageFullName = "node_js:v1";
 
         String filePath = this.fileHelpers.createTempDirectory();
         this.fileHelpers.unzipFile(imageDataModel.getFile(), filePath);

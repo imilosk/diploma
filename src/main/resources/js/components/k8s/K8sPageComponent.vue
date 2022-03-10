@@ -70,6 +70,18 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm text-gray-900">{{ deployment.servicePort }}</div>
                 </td>
+
+                <td>
+                  <button
+                      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-700 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-white-600"
+                      disabled
+                      type="submit"
+                  >
+                    Stop service
+                  </button>
+                </td>
+
+
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div class="text-blue-600 hover:text-blue-900 cursor-pointer" :id="deployment.name">Edit</div>
                 </td>

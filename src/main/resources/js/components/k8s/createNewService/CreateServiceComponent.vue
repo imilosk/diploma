@@ -59,6 +59,20 @@
                       type="number"
                       v-model="servicePort"
                   />
+
+                  <label class="block text-sm font-medium text-gray-700"
+                         for="service_port_id">
+                    Domain name
+                  </label>
+                  <input
+                      id="domain"
+                      class="mt-1 mb-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      name="domain"
+                      placeholder='www.test.org'
+                      type="text"
+                      v-model="domain"
+                  />
+
                   <button
                       class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 text-white-600"
                       type="submit"
@@ -101,10 +115,13 @@ export default {
       serviceName: '',
       servicePort: '',
       replicas: '',
+      domain: '',
       imageIds: [
-        '5',
-        '6',
-        '7',
+        'node_js:v1',
+        'php:v1',
+        'ruby:latest',
+        'elasticsearch:7.16.3',
+        'mongodb:5.0.5-focal'
       ],
     }
   },
@@ -113,7 +130,6 @@ export default {
       e.preventDefault();
 
       let bodyFormData = new FormData();
-      bodyFormData.append('imageId', this.selectedImageId);
       bodyFormData.append('serviceName', this.serviceName);
       bodyFormData.append('servicePort', this.servicePort);
       bodyFormData.append('replicas', this.replicas);

@@ -8,10 +8,8 @@ import javax.validation.constraints.NotNull;
 
 public class DockerImageRequestDataModel {
 
-    @NotBlank(message = "Image name is mandatory")
     private String imageName;
 
-    @NotBlank(message = "Image tag is mandatory")
     private String imageTag;
 
     @Optional

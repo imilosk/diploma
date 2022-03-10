@@ -33,12 +33,14 @@ public class DeploymentsService {
      * @param service The K8s service data model
      */
     public void deployService(DeploymentDataModel deployment, K8sServiceDataModel service) {
-        DockerImage image = this.dockerImageRepositoryImpl.get(deployment.getImageId());
-        deployment.setImageName(image.getName());
-        deployment.setImageTag(image.getTag());
+        DockerImage image = this.dockerImageRepositoryImpl.get("4329f1e7f119");
+        deployment.setImageName("node_js");
+        deployment.setImageTag("v1");
 
-        int containerPort = Integer.parseInt(image.getExposedPort().split("/")[0]);
+        int containerPort = 10006;
         deployment.setContainerPort(containerPort);
+        deployment.setDeploymentName("mynodeproject");
+        deployment.setImageId("4329f1e7f119");
 
         this.kubernetesHelpers.createOrUpdateK8sDeployment(this.k8sClient, deployment);
         this.kubernetesHelpers.createOrUpdateK8sService(this.k8sClient, service);

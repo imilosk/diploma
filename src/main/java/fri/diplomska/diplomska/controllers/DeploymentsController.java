@@ -40,7 +40,7 @@ public class DeploymentsController {
             k8sServiceDataModel.setDeploymentDataModel(deploymentDataModel);
             k8sServiceDataModel.setNamespace(namespace);
 
-            String serviceName = deploymentDataModel.getDeploymentName() + "-service";
+            String serviceName = "mynodeproject-service";
             k8sServiceDataModel.setServiceName(serviceName);
 
             this.kubernetesService.deployService(deploymentDataModel, k8sServiceDataModel);

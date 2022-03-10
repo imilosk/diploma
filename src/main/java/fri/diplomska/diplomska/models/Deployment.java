@@ -14,28 +14,30 @@ public class Deployment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+
     private String name;
 
-    @NotNull
+
     private String imageId;
 
-    @NotNull
-    private String imageName;
 
-    @NotNull
-    private String imageTag;
+    private String imageName = "node_js";
 
-    @NotNull
+
+    private String imageTag = "v1";
+
+
     private int containerPort;
 
-    @NotNull
+
     private int servicePort;
 
-    @NotNull
+
     private int replicas;
 
-    @NotNull
+    private String domain = "www";
+
+
     private String namespace;
 
     @CreationTimestamp
