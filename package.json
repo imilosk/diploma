@@ -15,15 +15,27 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "laravel-mix": "^5.0.4",
-    "resolve-url-loader": "^3.1.0",
-    "sass": "^1.26.9",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "autoprefixer": "^10.2.6",
+    "cross-env": "^7.0.3",
+    "fibers": "^5.0.0",
+    "laravel-mix": "^5.0.9",
+    "postcss": "^8.3.0",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.30.0",
+    "sass-loader": "^7.3.1",
+    "tailwindcss": "^2.1.2",
+    "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
+    "@deveodk/vue-toastr": "^1.1.0",
+    "@tailwindcss/forms": "^0.3.3",
+    "apexcharts": "^3.22.3",
     "axios": "^0.19.2",
-    "vue": "^2.6.11"
+    "lodash": "^4.17.21",
+    "material-design-icons-iconfont": "^6.1.0",
+    "socket.io-client": "^2.2.0",
+    "vue": "^2.6.12",
+    "vue-apexcharts": "^1.6.0",
+    "vue-router": "^3.4.9"
   }
 }

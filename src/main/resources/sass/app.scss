@@ -1,3 +1,8 @@
-p {
-  text-transform: uppercase;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "variables.scss";
+@import "layout.scss";
+
+@import "terminal.scss";
